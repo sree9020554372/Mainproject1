@@ -209,15 +209,12 @@ if(isset($_POST['BookNow']))
                                                         <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal">
 														<?php
 														$gid=$_REQUEST['id'];
-// $query=mysqli_query($conn," SELECT tbl_course.cid, tbl_course.cname, tbl_course.cost, tbl_course.status, tb_login.username
-// FROM tbl_course
-// INNER JOIN tb_login ON tbl_course.login_id = tb_login.login_id ");
+
 $query=mysqli_query($conn," SELECT tbl_course.cid, tbl_course.cname, tbl_course.cost, tbl_course.status
 FROM tbl_course where tbl_course.cid=$gid ");
 
 
-//$cid=$_POST['cid'];
-//$query=mysqli_query($conn,"select * from tbl_course where cid='$cid'and status='active'");
+
 $num2=mysqli_num_rows($query);
     if($num2 > 0){
         $row= mysqli_fetch_array($query);
@@ -244,24 +241,14 @@ $num2=mysqli_num_rows($query);
                                                                    
                                                             
                                                            
-                                                            <!--<div class="row form-group">
-                                                                    <div class="col col-md-13"><label for="select" class=" form-control-label" name="category">Category</label></div>
-                                                                    <div class="col-12 col-md-19">
-                                                                        <select name="category" id="scategory" class="form-control">
-                                                                            <option value="please select">Please select</option>
-                                                                            <option value="classical">Classical</option>
-                                                                            <option value="western">Western</option>
-                                                                            <option value="options">Option #3</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>-->
+                                                          
                                                             <div class="row form-group">
                                                                 <div class="col col-md-10"><label for="text-input" class=" form-control-label">Student Name</label></div>
                                                                 <div class="col-12 col-md-10"><input type="text" id="username" value="<?= ($row!=null) ? $a : "Not Available" ?>" name="username" placeholder=""   class="form-control"  ><small class="form-text text-muted"></small> </div>
                                                             </div>
                                                             <div class="row form-group">
                                                                 <div class="col col-md-10"><label for="text-input" class=" form-control-label">Email</label></div>
-                                                                <div class="col-12 col-md-10"><input type="email" id="email" value="<?= ($row!=null) ? $emaill : "Not Available" ?>" name="email" rows="9" placeholder="Content..."  class="form-control" ><small class="form-text text-muted"></small></div>
+                                                                <div class="col-12 col-md-10"><input type="email" id="email"  name="email" rows="9" placeholder="Content..."  class="form-control" ><small class="form-text text-muted"></small></div>
                                                             </div>    
                                                            <!-- <div class="row form-group">
                                                                 <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">description</label></div>

@@ -2,7 +2,7 @@
 session_start();
 if (!empty($_SESSION['logged_in'])) {
    // include('connection.php');
-
+   $a=$_SESSION['username'];
 }
 ?>
 
@@ -343,7 +343,7 @@ while($row=mysqli_fetch_array($query))
 		var name = jQuery('#name1').val();
 		console.log(name);
 		
-        var amount=<?php echo $cost ?>;
+        var amount=2000;
         var options =  {
             "key": "rzp_test_KB0lrOFPcWAXeZ", // Enter the Key ID generated from the Dashboard
 

@@ -169,7 +169,7 @@
                                                 <div class="card-body">
 												<p class="card-text">'.$cname.'</p>
                                                     
-												<a href="booking.php?id='.$cid.'" class="btn btn-primary">View Details</a>
+												<a href="singleview.php?id='.$cid.'" class="btn btn-primary">View Details</a>
 												
 												
                                                 </div>
