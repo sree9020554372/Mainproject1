@@ -360,14 +360,14 @@ while($row=mysqli_fetch_array($sql))
                                                             <script>
     //<span id="categoryname" style="color:red;"></span>
 function validateCname() {
-    var input = document.getElementById("cname").value;
+    var input = document.getElementById("name").value;
     var pattern = /^[A-Za-z]+$/; // regular expression pattern to match only letters
     
     if (!input.match(pattern)) {
         
         //alert("Please enter only letters for category name.");
         document.getElementById('msg1').innerHTML="Only alphabets are allowed!!"; 
-        document.getElementById("cname").value = "";
+        document.getElementById("name").value = "";
                
                  
         return false;

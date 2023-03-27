@@ -191,10 +191,7 @@ if(isset($_POST['ApplyLeave']))
                                                             
                                                                    
                                                             
-                                                           <!-- <div class="row form-group">
-                                                                <div class="col col-md-13"><label for="text-input" class=" form-control-label">Class Name</label></div>
-                                                                <div class="col-12 col-md-19"><input type="text" id="categoryname" name="categoryname" placeholder="enter class name" value="<?php= $row['categoryname'] ?>" class="form-control" ><small class="form-text text-muted"></small></div>
-                                                            </div>
+                                                         
                                                             <!--<div class="row form-group">
                                                                     <div class="col col-md-13"><label for="select" class=" form-control-label" name="category">Category</label></div>
                                                                     <div class="col-12 col-md-19">
@@ -207,12 +204,12 @@ if(isset($_POST['ApplyLeave']))
                                                                     </div>
                                                                 </div>-->
                                                             <div class="row form-group">
-                                                                <div class="col col-md-19"><label for="text-input" class=" form-control-label">Student Name</label></div>
-                                                                <div class="col-12 col-md-19"><input type="text" id="sname" name="sname" placeholder=""   class="form-control" ><small class="form-text text-muted"></small></div>
+                                                                <div class="col col-md-10"><label for="text-input" class=" form-control-label">Student Name</label></div>
+                                                                <div class="col-12 col-md-10"><input type="text" id="sname" name="sname" placeholder=""   class="form-control" ><small class="form-text text-muted"></small></div>
                                                             </div>
                                                             <div class="row form-group">
-                                                                <div class="col col-md-13"><label for="text-input" class=" form-control-label">Course Name</label></div>
-                                                                <div class="col-12 col-md-19"><input type="type" id="coursename" name="coursename" rows="9" placeholder="Content..." class="form-control"><small class="form-text text-muted"></small></div>
+                                                                <div class="col col-md-10"><label for="text-input" class=" form-control-label">Course Name</label></div>
+                                                                <div class="col-12 col-md-10"><input type="type" id="coursename" name="coursename" rows="9" placeholder="Content..." class="form-control"><small class="form-text text-muted"></small></div>
                                                             </div>    
                                                            <!-- <div class="row form-group">
                                                                 <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">description</label></div>
@@ -220,8 +217,8 @@ if(isset($_POST['ApplyLeave']))
                                                             </div>-->
                                                             <div class="row form-group">
                               
-                                       <div class="col col-md-3"><label for="text-input" class=" form-control-label">Leave Date</label></div>
-                                       <div class="col-12 col-md-19"><input type="date" id="date" name="date" placeholder="" class="form-control"><small class="form-text text-muted"></small></div>
+                                       <div class="col col-md-10"><label for="text-input" class=" form-control-label">Leave Date</label></div>
+                                       <div class="col-12 col-md-10"><input type="date" id="date" name="date" placeholder="" class="form-control"><small class="form-text text-muted"></small></div>
                                        </div> 
                                                             
                                                             

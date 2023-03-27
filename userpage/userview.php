@@ -59,9 +59,9 @@
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="userview.php">Join classes</a></li>
-						<li class="nav-item"><a class="nav-link" href="viewmaster.php">view schedules</a></li>
+						<li class="nav-item"><a class="nav-link" href="viewshedule.php">view schedules</a></li>
 						
-						<li class="nav-item"><a class="nav-link" href="viewshedule.php">Master</a></li>
+						<li class="nav-item"><a class="nav-link" href="viewmaster.php">Master</a></li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">My Achievement</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">

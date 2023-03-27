@@ -61,8 +61,8 @@
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="userview.php">join classes</a></li>
-						<li class="nav-item"><a class="nav-link" href="viewmaster.php">view schedule</a></li>
-						<li class="nav-item"><a class="nav-link" href="viewshedule.php">view masters</a></li>
+						<li class="nav-item"><a class="nav-link" href="viewshedule.php">view schedule</a></li>
+						<li class="nav-item"><a class="nav-link" href="manage_master.php">view masters</a></li>
 						<!--<li class="nav-item"><a class="nav-link" href="addleave.php">Apply Leave</a></li>-->
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Leave</a>

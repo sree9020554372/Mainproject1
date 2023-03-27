@@ -1,19 +1,15 @@
-
 <?php
 
 include('connection.php');
-session_start(); 
-//error_reporting(0);
-//$uid = $_SESSION['login_id'];
-//$login_id=$_SESSION['login_id'];
-//$sql="SELECT login_id from tb_login where login_id='$login_id'";
-//$resu = mysqli_query($conn, $sql);
-//$row = mysqli_fetch_assoc($resu);
-//$login_d= $row['login_id'];
+session_start();
+error_reporting(0); 
+$a=$_SESSION['username'];
+echo $_SESSION['username'];
 
-$a=$_SESSION['login_id'];
 if(isset($a))
 {
+$sql="SELECT username FROM tb_login WHERE login_id='$login_id'";
+
 
 
 //while($row=mysql_fetch_array($query)){
@@ -22,20 +18,21 @@ if(isset($a))
 //}
 if(isset($_POST['BookNow']))
 {
-   $cid=$_GET['cid'];
-   $bookid= $_POST['bookid'];
-   $studentname= $_POST['studentname'];
+   //$cid=$_GET['id'];
+   $login_id=$_GET['login_id'];
+   //$bookid= $_POST['bookid'];
+   $username= $_POST['username'];
    $email= $_POST['email'];
-   $coursename= $_POST['coursename'];
+   $cname= $_POST['cname'];
    $cost= $_POST['cost'];
  
 
    
-   $query1=mysqli_query($conn," INSERT INTO `tbl_booking`(`cid`,`bookid`,`username`, `studentname`, `email`,`coursename`,`cost`,`status`) VALUES('$cid','$bookid','$username','$studentname','$email','$coursename','$cost','active')");
+   $query1=mysqli_query($conn,"INSERT INTO `tbl_booking`(login_id,username,email,cname,cost,status) VALUES('$login_id','$a','$email','$cname','$cost','active')");
     //$result1 = mysqli_query($conn,$query1);
     if ($query1) {
     	echo "<script>alert('booking has been added.');</script>"; 
-    		echo "<script>window.location.href = 'booking.php'</script>";   
+    		echo "<script>window.location.href = 'viewbooking.php'</script>";   
    
   }
   else
@@ -45,6 +42,7 @@ if(isset($_POST['BookNow']))
 
   
 }
+
 }
 
 ?>
@@ -189,7 +187,7 @@ if(isset($_POST['BookNow']))
 	<div class="menu-box">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-12">
+				<div class="col-lg-10">
 					<div class="heading-title text-center">
 						
 						
@@ -210,20 +208,31 @@ if(isset($_POST['BookNow']))
                                                     <div class="card-body card-block">
                                                         <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal">
 														<?php
-$query=mysqli_query($conn," SELECT tbl_course.cid, tbl_course.cname, tbl_course.cost, tbl_course.status, tb_login.username
-FROM tbl_course
-INNER JOIN tb_login ON tbl_course.login_id = tb_login.login_id ");
+														$gid=$_REQUEST['id'];
+// $query=mysqli_query($conn," SELECT tbl_course.cid, tbl_course.cname, tbl_course.cost, tbl_course.status, tb_login.username
+// FROM tbl_course
+// INNER JOIN tb_login ON tbl_course.login_id = tb_login.login_id ");
+$query=mysqli_query($conn," SELECT tbl_course.cid, tbl_course.cname, tbl_course.cost, tbl_course.status
+FROM tbl_course where tbl_course.cid=$gid ");
 
-//$query=mysqli_query($conn,"select * from tbl_course where login_id='$login_id'and status='active'");
+
+//$cid=$_POST['cid'];
+//$query=mysqli_query($conn,"select * from tbl_course where cid='$cid'and status='active'");
 $num2=mysqli_num_rows($query);
     if($num2 > 0){
         $row= mysqli_fetch_array($query);
-    }
+   }
     else{
         $row= null;
     }
+
+
+
+
+?>  
   
-?>
+  
+
 
 
 
@@ -247,12 +256,12 @@ $num2=mysqli_num_rows($query);
                                                                     </div>
                                                                 </div>-->
                                                             <div class="row form-group">
-                                                                <div class="col col-md-19"><label for="text-input" class=" form-control-label">Student Name</label></div>
-                                                                <div class="col-12 col-md-19"><input type="text" id="full_name" name="full_name" placeholder=""   class="form-control" value="<?php $row['username']  ?>" ><small class="form-text text-muted"></small></div>
+                                                                <div class="col col-md-10"><label for="text-input" class=" form-control-label">Student Name</label></div>
+                                                                <div class="col-12 col-md-10"><input type="text" id="username" value="<?= ($row!=null) ? $a : "Not Available" ?>" name="username" placeholder=""   class="form-control"  ><small class="form-text text-muted"></small> </div>
                                                             </div>
                                                             <div class="row form-group">
-                                                                <div class="col col-md-13"><label for="text-input" class=" form-control-label">Email</label></div>
-                                                                <div class="col-12 col-md-19"><input type="email" id="email" name="email" rows="9" placeholder="Content..."  class="form-control" ><small class="form-text text-muted"></small></div>
+                                                                <div class="col col-md-10"><label for="text-input" class=" form-control-label">Email</label></div>
+                                                                <div class="col-12 col-md-10"><input type="email" id="email" value="<?= ($row!=null) ? $emaill : "Not Available" ?>" name="email" rows="9" placeholder="Content..."  class="form-control" ><small class="form-text text-muted"></small></div>
                                                             </div>    
                                                            <!-- <div class="row form-group">
                                                                 <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">description</label></div>
@@ -260,22 +269,22 @@ $num2=mysqli_num_rows($query);
                                                             </div>-->
                                                             <div class="row form-group">
                               
-                                       <div class="col col-md-3"><label for="text-input" class=" form-control-label">course Name</label></div>
-                                       <div class="col-12 col-md-19"><input type="type" id="cname" name="cname" placeholder="" value="<?= ($row!=null) ? $row['cname'] : "Not Available" ?>" class="form-control"><small class="form-text text-muted"></small></div>
+                                       <div class="col col-md-10"><label for="text-input" class=" form-control-label">course Name</label></div>
+                                       <div class="col-12 col-md-10"><input type="type" id="cname" name="cname" placeholder="" value="<?= ($row!=null) ? $row['cname'] : "Not Available" ?>" class="form-control"><small class="form-text text-muted"></small></div>
                                        </div> 
                                                               
                                                                 
                                                                 
                                                             <div class="row form-group">
-                                                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Cost</label></div>
-                                                                <div class="col-12 col-md-19"><input type="text" id="cost" name="cost" placeholder="" value="<?= ($row!=null) ? $row['cost'] : "Not Available" ?>" class="form-control"><small class="form-text text-muted"></small></div>
+                                                                <div class="col col-md-10"><label for="text-input" class=" form-control-label">Cost</label></div>
+                                                                <div class="col-12 col-md-10"><input type="text" id="cost" name="cost" placeholder="" value="<?= ($row!=null) ? $row['cost'] : "Not Available" ?>" class="form-control"><small class="form-text text-muted"></small></div>
                                                             </div>
                                                             
                                                             
                               
-                                                            
-                                                            <input type="submit" class="btn btn-primary" name="Booking" id="Booking" value="BookNow">
-                                                            <?php  ?> 
+															<!--<input type="hidden" class="btn btn-primary" value="cid" name="cid" id="cid">-->
+                                                            <input type="submit" class="btn btn-primary" name="BookNow" id="BookNow" value="BookNow">
+															<?php  ?> 
                                                         </form>
                                                     </div>
                                                     <div class="card-footer">

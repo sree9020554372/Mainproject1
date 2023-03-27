@@ -160,19 +160,23 @@ if (!empty($_SESSION['logged_in'])) {
                                 <table class="table" >
                                 
               
-              <tr>
+              
+				<tr>
                   <th>S1.NO</th>
-                  <th> Name</th>
-                  <th>Email</th>
-                  <th>Mobile No</th>
-                 
+                  <th>Class Name</th>
+                  <th>start time</th>
+                  <th>end time</th>
                  
               </tr>
           
               
               <?php
               include 'connection.php';
-              $query=mysqli_query($conn, $sql="SELECT * FROM tbl_master");
+              //$query=mysqli_query($conn, $sql = "SELECT tbl_shedule.shid, tbl_course.cname, tbl_shedule.ctime, tbl_shedule.etime, tbl_shedule.status
+             // FROM tbl_course JOIN tbl_shedule ON tbl_shedule.shid=tbl_course.cid" );
+             // $query=mysqli_query($conn, $sql = "SELECT  tbl_shedule.shid,tbl_course.cid,tbl_course.cname,tbl_shedule.ctime,tbl_shedule.etime,tbl_shedule.status FROM tbl_course JOIN tbl_shedule ON tbl_shedule.shid=tbl_course.cid" );
+             $query=mysqli_query($conn, $sql ="SELECT  tbl_shedule.shid,tbl_course.cid,tbl_course.cname,tbl_shedule.ctime,tbl_shedule.etime,tbl_shedule.status FROM tbl_course JOIN tbl_shedule ON tbl_shedule.cid=tbl_course.cid AND tbl_shedule.status='active'");
+
               
 $cnt=1;
 while($row=mysqli_fetch_array($query))
@@ -180,27 +184,26 @@ while($row=mysqli_fetch_array($query))
 ?>                                  
               <tr>
                   <td><?php echo htmlentities($cnt);?></td>
-                  <td><?php echo htmlentities($row['name']);?></td>
-                  <td><?php echo htmlentities($row['email']);?></td>
-                  <td><?php echo htmlentities($row['phoneno']);?></td>
                  
+                  <td><?php echo htmlentities($row['cname']);?></td>
+                  <td><?php echo htmlentities($row['ctime']);?></td>
                  
+                  <td> <?php echo htmlentities($row['etime']);?></td>
+       
                  
                <td>
                <?php
                     //if($row['status']==1){
-                        //echo '<p><a href="inactive.php?id='.$row['mid'].'$status=1">Disable</a></p>';
-                    //}else{
-                        //echo '<p><a href="active.php?id='.$row['mid'].'$status=0">Enable</a></p>';
-                   // }
+                        //echo '<p><a href="inactive.php?id='.$row['shid'].'$status=1">Disable</a></p>';
+                   // }else{
+                        //echo '<p><a href="active.php?id='.$row['shid'].'$status=0">Enable</a></p>';
+                    //}
                     ?>
-             <!-- <td><a href="?mid=<?php echo $row['mid']?>">update</a></td>
+               <!--<td><a href="courseupdate1111.php?shid=<?php echo $row['shid']?>">update</a></td>-->
               </tr>
               <?php $cnt=$cnt+1; } ?>
               
       </table>
-                                        
-                                </table>
                             </div>
                         </div>
                     </div>
@@ -225,11 +228,8 @@ while($row=mysqli_fetch_array($query))
                                                             
                                                                    
                                                             
-                                                           <!-- <div class="row form-group">
-                                                                <div class="col col-md-13"><label for="text-input" class=" form-control-label">Class Name</label></div>
-                                                                <div class="col-12 col-md-19"><input type="text" id="categoryname" name="categoryname" placeholder="enter class name" value="<?php= $row['categoryname'] ?>" class="form-control" ><small class="form-text text-muted"></small></div>
-                                                            </div>
-                                                            <!--<div class="row form-group">
+                                                          
+                                                            <div class="row form-group">
                                                                     <div class="col col-md-13"><label for="select" class=" form-control-label" name="category">Category</label></div>
                                                                     <div class="col-12 col-md-19">
                                                                         <select name="category" id="scategory" class="form-control">

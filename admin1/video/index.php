@@ -110,6 +110,7 @@
                             <li><i class="menu-icon fa fa-th"></i><a href="manage_leave.php">Leave Request</a></li>
                         </ul>
                     </li>
+                    
 
                   
                     </li>
