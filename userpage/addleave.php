@@ -7,12 +7,13 @@ if(isset($_POST['ApplyLeave']))
   {
    
     
-    $sname=$_POST['sname'];
+  
     $coursename=$_POST['coursename'];
+	$reason=$_POST['reason'];
     $date=$_POST['date'];
    
     
-    $query1=mysqli_query($conn," INSERT INTO `tbl_leave`(`sname`, `coursename`,`date`,`status` ) VALUES('$sname','$coursename','$date','active')");
+    $query1=mysqli_query($conn," INSERT INTO `tbl_leave`( `coursename`,`reason`,`date`,`status` ) VALUES('$coursename','$reason','$date','active')");
     //$result1 = mysqli_query($conn,$query1);
     if ($query1) {
     	echo "<script>alert('Leave has been added.');</script>"; 
@@ -203,14 +204,16 @@ if(isset($_POST['ApplyLeave']))
                                                                         </select>
                                                                     </div>
                                                                 </div>-->
-                                                            <div class="row form-group">
-                                                                <div class="col col-md-10"><label for="text-input" class=" form-control-label">Student Name</label></div>
-                                                                <div class="col-12 col-md-10"><input type="text" id="sname" name="sname" placeholder=""   class="form-control" ><small class="form-text text-muted"></small></div>
-                                                            </div>
+                                                            
                                                             <div class="row form-group">
                                                                 <div class="col col-md-10"><label for="text-input" class=" form-control-label">Course Name</label></div>
                                                                 <div class="col-12 col-md-10"><input type="type" id="coursename" name="coursename" rows="9" placeholder="Content..." class="form-control"><small class="form-text text-muted"></small></div>
-                                                            </div>    
+                                                            </div>   
+															
+															<div class="row form-group">
+                                                                <div class="col col-md-10"><label for="text-input" class=" form-control-label">Reason</label></div>
+                                                                <div class="col-12 col-md-10"><input type="type" id="reason" name="reason" rows="9" placeholder="Content..." class="form-control"><small class="form-text text-muted"></small></div>
+                                                            </div>   
                                                            <!-- <div class="row form-group">
                                                                 <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">description</label></div>
                                                                 <div class="col-12 col-md-9"><textarea name="description" id="description" rows="9" placeholder="Content..." class="form-control"></textarea></div>

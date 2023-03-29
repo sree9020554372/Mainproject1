@@ -59,7 +59,7 @@
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Leave</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
 								<a class="dropdown-item" href="addleave.php">Apply Leave</a>
-								<a class="dropdown-item" href="viewleave1.php">viewLeave</a>
+								<a class="dropdown-item" href="viewleave.php">viewLeave</a>
 								
 								<!--<a class="dropdown-item" href="../logout.php">Movie Ticket Cart</a>-->
 							</div>
@@ -155,10 +155,7 @@
                   <th> Name</th>
                   <th>Email</th>
                   <th>Mobile No</th>
-                  <th>Age</th>
-                  <th>Gender</th>
-                  <th>Qualification</th>
-                  <th>YEAR OF EXPIERENCE </th>
+                 
                  
               </tr>
           
@@ -176,10 +173,6 @@ while($row=mysqli_fetch_array($query))
                   <td><?php echo htmlentities($row['name']);?></td>
                   <td><?php echo htmlentities($row['email']);?></td>
                   <td><?php echo htmlentities($row['phoneno']);?></td>
-                  <td> <?php echo htmlentities($row['age']);?></td>
-                  <td> <?php echo htmlentities($row['gender']);?></td>
-                  <td> <?php echo htmlentities($row['Qualification']);?></td>
-                  <td> <?php echo htmlentities($row['exp']);?></td>
                  
                  
                <td>

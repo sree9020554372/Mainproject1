@@ -344,7 +344,7 @@ session_start();
               
               <tr>
                   <th>S1.NO</th>
-                  <th> Name</th>
+                  
                   <th> Reason</th>
                   <th>START DATE</th>
                   <th>END DATE</th>
@@ -365,7 +365,7 @@ while($row=mysqli_fetch_array($query))
 ?>                                  
               <tr>
                   <td><?php echo htmlentities($cnt);?></td>
-                  <td><?php echo htmlentities($row['mastername']);?></td>
+                 
                   <td><?php echo htmlentities($row['reason']);?></td>
                   <td><?php echo htmlentities($row['sdate']);?></td>
                   <td><?php echo htmlentities($row['edate']);?></td>

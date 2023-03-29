@@ -60,7 +60,17 @@
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="userview.php">join classes</a></li>
+						<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Courses</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-a">
+						<a class="dropdown-item" href="userview.php">Join class</a>
+								
+								<a class="dropdown-item" href="video/index.php">view class</a>
+								
+								
+								<!--<a class="dropdown-item" href="../logout.php">Movie Ticket Cart</a>-->
+							</div>
+                        </li>
 						<li class="nav-item"><a class="nav-link" href="viewshedule.php">view schedule</a></li>
 						<li class="nav-item"><a class="nav-link" href="manage_master.php">view masters</a></li>
 						<!--<li class="nav-item"><a class="nav-link" href="addleave.php">Apply Leave</a></li>-->
@@ -68,7 +78,7 @@
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Leave</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
 								<a class="dropdown-item" href="addleave.php">Apply Leave</a>
-								<a class="dropdown-item" href="">viewLeave</a>
+								<a class="dropdown-item" href="viewleave.php">viewLeave</a>
 								
 								<!--<a class="dropdown-item" href="../logout.php">Movie Ticket Cart</a>-->
 							</div>

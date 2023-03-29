@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     <div class="content">
 
       <form  id="form" name="form"  action="reg.php" method="post" autocomplete="off">
-       
+        
         <div class="user-details">
           <div class="input-box">
             <span class="details">Full Name</span>
@@ -329,7 +329,7 @@ function addressValidation(inputTxt){
     }
 
 
-
+    
 
 </script>
 </body>

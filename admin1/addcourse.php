@@ -31,7 +31,13 @@ else
 
 $img=md5($images).time().$extension;
 move_uploaded_file($_FILES["images"]["tmp_name"],"images/".$img);
+     
 
+
+
+
+
+ 
  
     $query1=mysqli_query($conn," INSERT INTO `tbl_course`(`c_id`,`login_id`, `cname`, `cstart`,`cost`,`description`,`images`,`status`) VALUES('$c_id','$a','$cname','$cstart','$cost','$description','$images','active')");
     //$result1 = mysqli_query($conn,$query1);
