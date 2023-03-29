@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
       else
       {
   
-        $sql="insert into tb_login(`username`,`password`,`role`,`status`) VALUES ('$username','$password','master',3)";
+        $sql="insert into tb_login(`username`,`password`,`role`,`status`) VALUES ('$username','$password','admin',3)";
 		
         if($conn->query($sql)=== TRUE)
         {

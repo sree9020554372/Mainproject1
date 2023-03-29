@@ -11,6 +11,16 @@
   
    // }
 //$u= $row['reg_id'];
+
+
+
+
+
+
+
+
+
+
 ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -82,52 +92,51 @@
                             <li><i class="fa fa-file-word-o"></i><a href="ui-typgraphy.html">Typography</a></li>
                         </ul> -->
                         <li class="menu-item-has-children dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>view All Course</a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Add Category</a>
                             <ul class="sub-menu children dropdown-menu">
-                                <li><i class="fa fa-table"></i><a href="viewcourse.php">view course</a></li>
-           
-                            </ul>
-                        <li class="menu-item-has-children dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i> Shedule</a>
-                            <ul class="sub-menu children dropdown-menu">
-                                <li><i class="fa fa-table"></i><a href="manage_shedule.php">view shedule</a></li>
-                                
+                                <li><i class="fa fa-table"></i><a href="adcategory.php">category</a></li>
+                                <li><i class="fa fa-table"></i><a href="manage_category.php">Manage category</a></li>
                             </ul>
                         </li>
                         
                     
-                    
-                    </li>
-                    <li class="menu-item-has-children active dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Our Team</a>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Add Classes</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-th"></i><a href="manage_master.php">view Masters</a></li>
-                            
-                        </ul>
-                    </li>
-
-                    <li class="menu-item-has-children active dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>ADD Attendence</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-th"></i><a href="addA.php">Add Ateendence </a></li>
-                            <li><i class="menu-icon fa fa-th"></i><a href="manageA.php">view Ateendence </a></li>
-                            
+                            <li><i class="fa fa-table"></i><a href="addcourse.php">Add Classes</a></li>
+                            <li><i class="fa fa-table"></i><a href="viewcourse.php">Manage classes</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children active dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Course Materials</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Add Master</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-th"></i><a href="pdf/pdfview.php">VIEW PDF </a></li>
-                            <li><i class="menu-icon fa fa-th"></i><a href="video/index.php">view VIDEO </a></li>
-                            
+                            <li><i class="menu-icon fa fa-th"></i><a href="addmaster.php">Add Master</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="manage_master.php">Manage_Master</a></li>
                         </ul>
-                        <li class="menu-item-has-children active dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Apply Leave</a>
-                            <ul class="sub-menu children dropdown-menu">
-                                <li><i class="menu-icon fa fa-th"></i><a href="applyleave.php">Apply Leave </a></li>
-                                <li><i class="menu-icon fa fa-th"></i><a href="viewleave.php">view Leave </a></li>
-                                
-                            </ul>
+                    </li>
+                    <li class="menu-item-has-children active dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Add Schedule</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-th"></i><a href="addshedule.php">Add Schedule</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="manage_shedule.php">Manage Shedule</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children active dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Course Related</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-th"></i><a href="video/add.php">Add Video</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="video/index.php">View video</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="pdf/insert.php">Add pdf</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="pdf/pdfview.php">View pdf</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children active dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Students</a>
+                        <ul class="sub-menu children dropdown-menu">
+                           
+                            <li><i class="menu-icon fa fa-th"></i><a href="manage_leave.php">Leave Request</a></li>
+                        </ul>
+                    </li>
                     
                     
                     
@@ -346,7 +355,26 @@
                         <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                         <main id="main" class="main">
 
-                        
+                        <?php
+             //$reg_id=$_REQUEST['reg_id'];
+              $query=mysqli_query($conn, "SELECT * FROM tbl_reg WHERE STATUS='3' ");
+              //"SELECT tbl_reg.* 
+              //FROM tbl_reg 
+              //INNER JOIN tb_login ON tbl_reg.login_id = tb_login.username WHERE tb_login.username = 'a' ");
+              
+           
+              $num2=mysqli_num_rows($query);
+              if($num2 > 0){
+                  $row= mysqli_fetch_array($query);
+             }
+              else{
+                  $row= null;
+              }
+          
+          
+          
+          
+          ?>  
 
 <div class="pagetitle">
   <p style=font-weight:bold;font-size:20px;color:light-blue>Admin Profile</p>
@@ -368,7 +396,12 @@
 
           <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
           <h2></h2>
-          <h3>ADMIN</h3>
+        <div class="row">
+            <div class="col-lg-3 col-md-4 label"></div>
+             <div class="col-lg-9 col-md-8">
+              <label for="full_name" class="form-control-label"><h5 style=font-weight:bold;font-size:20px;color:light-blue><?= $row['full_name'] ?></h5></label>
+             </div>
+            </div>
           
           <div class="social-links mt-2">
             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -391,12 +424,16 @@
 
           <ul class="nav nav-tabs nav-tabs-bordered">
 
-            <li class="nav-item">
-              <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
+          <li class="nav-item">
+           <!-- <li><i class="fa fa-table"></i><a href="adcategory.php">category</a></li>-->
+              <!--<button class="nav-link" data-bs-toggle="tab" data-bs-target="adminprofile-edit.php">Edit Profile</button>-->
+              <button class="nav-link" data-bs-toggle="tab"> <a href="adminprofile.php">overview </a>
             </li>
 
-            <li class="nav-item">
-              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
+            <li class="nav-item">         
+           <!-- <li><i class="fa fa-table"></i><a href="adcategory.php">category</a></li>-->
+              <!--<button class="nav-link" data-bs-toggle="tab" data-bs-target="adminprofile-edit.php">Edit Profile</button>-->
+              <button class="nav-link" data-bs-toggle="tab"><a href="adminprofile-edit.php?reg_id=<?php echo $row['reg_id']; ?>">Edit-Profile </a>
             </li>
 
             <li class="nav-item">
@@ -409,26 +446,7 @@
 
           </ul>
         
-          <?php
-             //$reg_id=$_REQUEST['reg_id'];
-              $query=mysqli_query($conn, "SELECT * FROM tbl_reg WHERE STATUS='1' ");
-              //"SELECT tbl_reg.* 
-              //FROM tbl_reg 
-              //INNER JOIN tb_login ON tbl_reg.login_id = tb_login.username WHERE tb_login.username = 'a' ");
-              
-           
-              $num2=mysqli_num_rows($query);
-              if($num2 > 0){
-                  $row= mysqli_fetch_array($query);
-             }
-              else{
-                  $row= null;
-              }
-          
-          
-          
-          
-          ?>        
+                
 
  
           <div class="tab-content pt-2">
@@ -442,7 +460,7 @@
               <div class="row">
             <div class="col-lg-3 col-md-4 label"></div>
              <div class="col-lg-9 col-md-8">
-              <label for="full_name" class="form-control-label"><h5 style=font-weight:bold;font-size:20px;color:blue><?= $row['full_name'] ?></h5></label>
+              <label for="full_name" class="form-control-label"><h5 style=font-weight:bold;font-size:20px;color:light-blue><?= $row['full_name'] ?></h5></label>
              </div>
             </div>
               <h5 class="card-title">Profile Details</h5>
@@ -490,7 +508,20 @@
 
 
               <!-- Profile Edit Form -->
-              <!--<form>
+              <!--<form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
+
+              <?php
+//$id=$_GET['reg_id'];
+//$query=mysqli_query($conn,"select * from tbl_reg where reg_id='$id'and status='1'");
+//$num2=mysqli_num_rows($query);
+    //if($num2 > 0){
+        //$row= mysqli_fetch_array($query);
+    //}
+    //else{
+        //$row= null;
+    //}
+  
+?>
                 <div class="row mb-3">
                   <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                   <div class="col-md-8 col-lg-9">
@@ -505,7 +536,7 @@
                 <div class="row mb-3">
                   <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
+                    <input name="fullName" type="text" class="form-control" id="fullName" value=<?= $row['full_name'] ?>>
                   </div>
                 </div>
 
@@ -589,7 +620,7 @@
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary">Save Changes</button>
                 </div>
-              </form><!-- End Profile Edit Form -->
+              </form>-->
 
             </div>
 
