@@ -2,48 +2,47 @@
 	
 	
 	session_start();
-  $a=$_SESSION['username'];
+  //$a=$_SESSION['username'];
   //echo $_SESSION['username'];
     include('connection.php');
-   // if(isset($a))
-    //{
-    //$sql="SELECT username FROM tb_login WHERE login_id='$login_id'";
+ 
+    
+    $a=$_SESSION['username'];
+    //echo $a;
+   
+    $q="select login_id from tb_login where username='$a'";
+    $res=mysqli_query($conn,$q);
+    $row=mysqli_fetch_array($res);
+    $login_id= $row['login_id'];
+
+
+
+  //$login_id = $_GET['login_id'];
+  //echo $login_id;
+  //$username = isset($_POST['username']) ? $_POST['username'] : '';
+  //$password = isset($_POST['password']) ? $_POST['password'] : '';
+ 
   
-   // }
-//$u= $row['reg_id'];
+  // make sure $full_name and $gender are not empty
+  if(isset($_POST['update'])){
+    $password=$_POST['password'];
+    $query = "UPDATE tb_login SET password='$password' WHERE login_id='$login_id'";
+    $query_run = mysqli_query($conn, $query);
+    
+    //     if($query_run) {
+    //     echo "<script>alert('profile has been updated.');</script>"; 
+    //     echo "<script>window.location.href = 'adminprofile.php'</script>";
+    //   }
+    //   else {
+    //     echo "<script>alert('Something Went Wrong. Please try again.');</script>";
+    //   }
+     }
+ 
 
 
 
-
-if(isset($_POST['update']))
-{
-    $reg_id=$_GET['reg_id'];
-    $full_name = $_POST['full_name'];
-    $email = $_POST['email'];
-    $phone_no = $_POST['phone_no'];
-    $dob = $_POST['dob'];
-    $gender = $_POST['gender'];
-    $address = $_POST['address'];
-      
-	  
-
-      //$images = $_POST['images'];
-        
-$query="UPDATE tbl_reg SET full_name='$full_name',email='$email',phone_no='$phone_no' ,dob='$dob' ,gender='$gender',address='$address' where reg_id='$reg_id' ";
-$query_run=mysqli_query($conn,$query);
-if ($query) {
-  echo "<script>alert('profile has been updated added.');</script>"; 
-    echo "<script>window.location.href = 'adminprofile-edit.php'</script>";   
-
-}
-else
-{
-echo "<script>alert('Something Went Wrong. Please try again.');</script>";  	
-}
-}
 
 ?>
-
 
 
 
@@ -384,7 +383,7 @@ echo "<script>alert('Something Went Wrong. Please try again.');</script>";
 
                         <?php
              //$reg_id=$_REQUEST['reg_id'];
-              $query=mysqli_query($conn, "SELECT * FROM tbl_reg WHERE STATUS='1' ");
+              $query=mysqli_query($conn, "SELECT * FROM tb_login WHERE STATUS='1' ");
               //"SELECT tbl_reg.* 
               //FROM tbl_reg 
               //INNER JOIN tb_login ON tbl_reg.login_id = tb_login.username WHERE tb_login.username = 'a' ");
@@ -417,7 +416,7 @@ echo "<script>alert('Something Went Wrong. Please try again.');</script>";
 <section class="section profile">
 <?php
 //$id=$_GET['reg_id'];
-$query=mysqli_query($conn,"select * from tbl_reg where status='3'");
+$query=mysqli_query($conn,"select * from tb_login where status='1'");
 $num2=mysqli_num_rows($query);
     if($num2 > 0){
         $row= mysqli_fetch_array($query);
@@ -427,20 +426,7 @@ $num2=mysqli_num_rows($query);
     }
   
 ?>
-  <div class="row">
-    <div class="col-xl-4">
-
-      <div class="card">
-        <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-
-          <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-          <h2></h2>
-        <div class="row">
-            <div class="col-lg-3 col-md-4 label"></div>
-             <div class="col-lg-9 col-md-8">
-              <label for="full_name" class="form-control-label"><h5 style=font-weight:bold;font-size:20px;color:light-blue><?= $row['full_name'] ?></h5></label>
-             </div>
-            </div>
+  
           
           <div class="social-links mt-2">
             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -469,10 +455,10 @@ $num2=mysqli_num_rows($query);
               <button class="nav-link" data-bs-toggle="tab"> <a href="adminprofile.php">overview </a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item">         
            <!-- <li><i class="fa fa-table"></i><a href="adcategory.php">category</a></li>-->
               <!--<button class="nav-link" data-bs-toggle="tab" data-bs-target="adminprofile-edit.php">Edit Profile</button>-->
-              <button class="nav-link" data-bs-toggle="tab"> <a href="adminprofile-edit.php">Edit-Profile </a>
+              <button class="nav-link" data-bs-toggle="tab"><a href="adminprofile-edit.php">Edit-Profile </a>
             </li>
 
             <li class="nav-item">
@@ -480,7 +466,7 @@ $num2=mysqli_num_rows($query);
             </li>
 
             <li class="nav-item">
-              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
+              <button class="nav-link" data-bs-toggle="tab"> <a href="adminprofile-ch.php?login_id=<?php echo $row['login_id'];?>">Edit-Profile </a> 
             </li>
 
           </ul>
@@ -492,23 +478,8 @@ $num2=mysqli_num_rows($query);
               <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
 
            
-                <div class="row mb-3">
-                  <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
-                  <div class="col-md-8 col-lg-9">
-                    <img src="assets/img/profile-img.jpg" alt="Profile">
-                    <div class="pt-2">
-                      <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-                      <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
-                    </div>
-                  </div>
-                </div>
+                
 
-                <div class="row mb-3">
-                  <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
-                  <div class="col-md-8 col-lg-9">
-                    <input name="fullName" type="text" class="form-control" id="fullName" value=<?= $row['full_name'] ?>>
-                  </div>
-                </div>
 
                 <!--<div class="row mb-3">
                   <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
@@ -517,39 +488,27 @@ $num2=mysqli_num_rows($query);
                   </div>
                 </div>-->
 
-                <div class="row mb-3">
-                  <label for="company" class="col-md-4 col-lg-3 col-form-label">Email</label>
+               <!-- <div class="row mb-3">
+                  <label for="company" class="col-md-4 col-lg-3 col-form-label">Username</label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="email" type="text" class="form-control" id="company" value=<?= $row['email'] ?>>
+                    <input name="username" type="text" class="form-control" id="username" value="<?= ($row!=null) ? $a : "Not Available" ?>" >
+                  </div>
+                </div>-->
+
+                <div class="row mb-3">
+                  <label for="Job" class="col-md-4 col-lg-3 col-form-label">Password </label>
+                  <div class="col-md-8 col-lg-9">
+                    <input name="password" type="text" class="form-control" id="password"  >
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="Job" class="col-md-4 col-lg-3 col-form-label">Re-Enter-Password </label>
+                  <div class="col-md-8 col-lg-9">
+                    <input name="re-password" type="text" class="form-control" id="re-password" >
                   </div>
                 </div>
 
-                <div class="row mb-3">
-                  <label for="Job" class="col-md-4 col-lg-3 col-form-label">Phone </label>
-                  <div class="col-md-8 col-lg-9">
-                    <input name="phone_no" type="text" class="form-control" id="Job" value=<?= $row['phone_no'] ?>>
-                  </div>
-                </div>
-
-                <div class="row mb-3">
-                  <label for="Country" class="col-md-4 col-lg-3 col-form-label">Dob</label>
-                  <div class="col-md-8 col-lg-9">
-                    <input name="dob" type="text" class="form-control" id="Country" value=<?= $row['dob'] ?>>
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <label for="Address" class="col-md-4 col-lg-3 col-form-label">Gender</label>
-                  <div class="col-md-8 col-lg-9">
-                    <input name="address" type="text" class="form-control" id="Address" value=<?= $row['gender'] ?>>
-                  </div>
-                </div>
-
-                <div class="row mb-3">
-                  <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
-                  <div class="col-md-8 col-lg-9">
-                    <input name="address" type="text" class="form-control" id="Address" value=<?= $row['address'] ?>>
-                  </div>
-                </div>
+               
 
                 <!--<div class="row mb-3">
                   <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
@@ -595,7 +554,7 @@ $num2=mysqli_num_rows($query);
                    
                
                 <div class="text-center">
-                <input type="hidden" class="btn btn-primary" value="reg_id" name="reg_id" id="reg_id">
+                <input type="hidden" class="btn btn-primary" value="login_id" name="login_id" id="login_id">
                 <input type="submit" class="btn btn-primary" value="update" name="update" id="update">
                   <!--<button type="submit" class="btn btn-primary">Save Changes</button>-->
                 </div>

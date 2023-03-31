@@ -15,6 +15,7 @@
 if(isset($_POST['update']))
 {
   $reg_id = $_GET['reg_id'];
+  $login_id = $_GET['login_id'];
   $full_name = isset($_POST['full_name']) ? $_POST['full_name'] : '';
   $email = isset($_POST['email']) ? $_POST['email'] : '';
   $phone_no = isset($_POST['phone_no']) ? $_POST['phone_no'] : '';

@@ -184,39 +184,27 @@ if(isset($message)){
               </tr>
           
               
-              <?php
-              include 'connection.php';
-              $query=mysqli_query($conn, $sql = "SELECT  * FROM tbl_booking WHERE STATUS='active'");
+            <?php
+            include 'connection.php';
+            $query=mysqli_query($conn, $sql = "SELECT  * FROM tbl_booking WHERE STATUS='active'");
               
               
-$cnt=1;
-while($row=mysqli_fetch_array($query))
-{
-?>                                  
-              <tr>
-                  <td><?php echo htmlentities($cnt);?></td> 
-                  <td> <?php echo htmlentities($row['username']);?></td>
-                  <td> <?php echo htmlentities($row['email']);?></td>
-                  <td><?php echo htmlentities($row['cname']);?></td>
-                  <td><?php echo htmlentities($row['cost']);?></td>
-                  <!--<td><a style="color:black" class="btn btn-primary href="?bookid=<?php echo $row['bookid'];?>><b>PayNow</a></td>-->
-                  
-                  <td><input type="button" id="rzp-button1"name="btn"value="pay now"class="btn btn-primary" onclick="pay_now()"/></td>
-                 
-                
-                  
-                 
-               <td>
-               <?php
-                   // if($row['status']==1){
-                        //echo '<p><a href="inactive.php?id='.$row['leaveid'].'$status=1">Disable</a></p>';
-                   // }else{
-                        //echo '<p><a href="active.php?id='.$row['leaveid'].'$status=0">Enable</a></p>';
-                    //}
-                    ?>
-              <!-- <td><a href="courseupdate1111.php?leaveid=<?php echo $row['leaveid']?>">update</a></td>-->
-              </tr>
-              <?php $cnt=$cnt+1; } ?>             
+                $cnt=1;
+                while($row=mysqli_fetch_array($query))
+                {
+                    $price= $row['cost'];
+                ?>                                  
+                    <tr>
+                        <td><?php echo htmlentities($cnt);?></td> 
+                        <td> <?php echo htmlentities($row['username']);?></td>
+                        <td> <?php echo htmlentities($row['email']);?></td>
+                        <td><?php echo htmlentities($row['cname']);?></td>
+                        <td><?php echo htmlentities($row['cost']);?></td>
+                        
+                        <td><input type="button" id="rzp-button1"name="btn"value="pay now"class="btn btn-primary" onclick="pay_now(<?php echo $price; ?>)"/></td>   
+                    </tr>
+              <?php $cnt=$cnt+1; 
+            } ?>             
               
       </table>
                                         
@@ -339,11 +327,11 @@ while($row=mysqli_fetch_array($query))
 <script>
 //   console.log("hello");
 // var amt ="100";
-    function pay_now(){
+    function pay_now(price){
 		var name = jQuery('#name1').val();
 		console.log(name);
 		
-        var amount=2000;
+        var amount=price;
         var options =  {
             "key": "rzp_test_KB0lrOFPcWAXeZ", // Enter the Key ID generated from the Dashboard
 

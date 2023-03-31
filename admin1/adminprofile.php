@@ -5,6 +5,7 @@
   $a=$_SESSION['username'];
   //echo $_SESSION['username'];
     include('connection.php');
+   
    // if(isset($a))
     //{
     //$sql="SELECT username FROM tb_login WHERE login_id='$login_id'";
@@ -441,7 +442,7 @@
             </li>
 
             <li class="nav-item">
-              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
+              <button class="nav-link" data-bs-toggle="tab" ><a href="adminprofile-ch.php?login_id=<?php echo $row['login_id'];?>">Change Password</a></button>
             </li>
 
           </ul>
