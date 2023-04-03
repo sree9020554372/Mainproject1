@@ -5,6 +5,10 @@
         include 'db.php';
 
         if (isset($_POST['submit'])) {
+
+            $c_id = $_POST['c_id'];
+            $cid = $_POST['cid'];
+           $description = $_POST['description'];
          
           $pdf=$_FILES['pdf']['name'];
           $pdf_type=$_FILES['pdf']['type'];
@@ -13,7 +17,7 @@
           $pdf_store="pdf/".$pdf;
           move_uploaded_file($pdf_tem_loc,$pdf_store);
 
-          $sql="INSERT INTO pdf_file(`pdf`) values('$pdf')";
+          $sql="INSERT INTO pdf_file(`c_id`,`cid`,`description`,`pdf`,`status`) values('$c_id','$cid','$description','$pdf','active')";
       
           $query=mysqli_query($conn,$sql);
           if ($query) {
@@ -299,10 +303,10 @@
          
                
 
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-12">
                                                 <div class="card">
                                                     <div class="card-header">
-                                                        <strong></strong> 
+                                                        <strong>ADD NOTES</strong> 
                                                     </div>
                                                     <div class="card-body card-block">
                                                         <form action="insert.php" method="post" enctype="multipart/form-data" class="form-horizontal">
@@ -312,8 +316,89 @@
                                                                     <p class="form-control-static">Username</p>
                                                                 </div>
                                                             </div>-->
+
+                                                            <?php
+
+
+
+$sql=mysqli_query($conn,"SELECT * FROM tbl_category WHERE STATUS='active'"); 
+?>
+<label>Category Name</label><br>
+
+     
+<select   name="c_id" id="categoryname" onchange="showResult(this.value)" class="form-control m-bot15" required >
+<option value="">--select--</option>
+<?php
+while($row=mysqli_fetch_array($sql))
+{
+
+?>
+<option value="<?php echo $row[0] ?>" ><?php echo $row[1] ?></option>
+
+<?php
+  
+}
+?>
+
+</select></div>
+
+<?php
+
+
+
+$sql=mysqli_query($conn,"SELECT * FROM tbl_course WHERE STATUS='active'"); 
+?>
+<label>CourseName</label><br>
+
+     
+<select   name="cid" id="cname" onchange="showResult(this.value)" class="form-control m-bot15" required >
+<option value="">--select--</option>
+<?php
+while($row=mysqli_fetch_array($sql))
+{
+
+?>
+<option value="<?php echo $row[0] ?>" ><?php echo $row[3] ?></option>
+
+<?php
+  
+}
+?>
+
+</select>
+
+
                                                             <div class="row form-group">
-                                                                <div class="col col-md-13"><label for="text-input" class=" form-control-label">PDF move_uploaded_file</label></div>
+                                                                <div class="col col-md-6"><label for="textarea-input" class=" form-control-label">description</label></div>
+                                                                <!--<div class="col-12 col-md-9"><textarea name="description" id="description" rows="9" placeholder="Content..." class="form-control" required onchange="validatedes();"></textarea></div>-->
+                                                                <div class="col-12 col-md-9">  <textarea rows="9" name="description"  id="description"  onChange="maxlength1(this, 250)" class="form-control"  pattern="^(?:\b\w+\b[\s\r\n]*){1,250}$"></textarea></div>
+                                                                <div class="col col-md-3"> <span id="dname" style="color:red;"></span></div>
+                                                                <div class="col col-md-3"> </div>
+                                                            </div>
+                                                            <script>
+                                                                
+    function maxlength1(element, maxvalue){
+    var q = element.value.split(/[\s]+/).length;
+    if(q > maxvalue){
+        var r = q - maxvalue;
+        //alert("Sorry, you have input "+q+" words into the "+
+        //"text area box you just completed. It can return no more than "+
+        //maxvalue+" words to be processed. Please abbreviate "+
+        //"your text by at least "+r+" words");
+        document.getElementById('vname').innerHTML="Sorry, you have input "+q+" words  "+
+        " for description. It can return no more than "+
+        maxvalue+" "+
+        "Please abbreviate your text by at least "+r+" words"; 
+        document.getElementById("description").value = "";
+        return false;
+    }
+    document.getElementById('dname').innerHTML="";
+    return true;
+}
+</script>
+
+                                                            <div class="row form-group">
+                                                                <div class="col col-md-6"><label for="text-input" class=" form-control-label">PDF move_uploaded_file</label></div>
                                                                 <div class="col-12 col-md-19"><input type="file" id="pdf" name="pdf" placeholder="" class="form-control"><small class="form-text text-muted"></small></div>
                                                             </div>
                                                             

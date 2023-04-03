@@ -11,15 +11,16 @@ if(isset($_POST['update']))
         
 $query="UPDATE tbl_category SET categoryname='$categoryname',description='$description' where c_id='$c_id' ";
 $query_run=mysqli_query($conn,$query);
-if($query_run)
-{
-    $_SESSION['status'] = "Category updated successfully";
-    header('location:manage_category.php');
+if ($query) {
+    echo "<script>alert('Category updated succesfully.');</script>"; 
+        echo "<script>window.location.href = 'manage_category.php'</script>";   
+
 }
 else
 {
-    echo "no";
+echo "<script>alert('Something Went Wrong. Please try again.');</script>";  	
 }
+
 }
 
 ?>
@@ -139,6 +140,13 @@ else
                         <ul class="sub-menu children dropdown-menu">
                            
                             <li><i class="menu-icon fa fa-th"></i><a href="manage_leave.php">Leave Request</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children active dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Master</a>
+                        <ul class="sub-menu children dropdown-menu">
+                           
+                            <li><i class="menu-icon fa fa-th"></i><a href="viewleave.php">Leave Request</a></li>
                         </ul>
                     </li>
 
@@ -324,7 +332,7 @@ else
 
         </header>
         
-        <div class="col-lg-6">
+        <div class="col-lg-12">
     <div class="card">
         <div class="card-header">
             <strong>UPDATE CLASSES</strong> 

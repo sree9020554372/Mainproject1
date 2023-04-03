@@ -112,7 +112,13 @@
                             <li><i class="menu-icon fa fa-th"></i><a href="manage_leave.php">Leave Request</a></li>
                         </ul>
                     </li>
-
+                    <li class="menu-item-has-children active dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Master</a>
+                        <ul class="sub-menu children dropdown-menu">
+                           
+                            <li><i class="menu-icon fa fa-th"></i><a href="viewleave.php">Leave Request</a></li>
+                        </ul>
+                    </li>
 
                    <!---- <h3 class="menu-title">Icons</h3> /.menu-title 
 
@@ -309,6 +315,7 @@
                 </div>
             </div>
         </div>
+        
 
         <div class="content mt-3">
             <div class="animated fadeIn">
@@ -328,12 +335,13 @@
                                             <th>description</th>
                                             <th>EDIT</th>
                                             <th>DELETE</th>
+                                        
                                         </tr>
                                         
                                     </thead>
                                     <?php
                                     include 'connection.php';
-                                    $query=mysqli_query($conn,"SELECT * FROM tbl_category WHERE STATUS='active' ");
+                                    $query=mysqli_query($conn,"SELECT * FROM tbl_category WHERE STATUS='active'   ");
                                     
                       $cnt=1;
                       while($row=mysqli_fetch_array($query))
@@ -344,17 +352,17 @@
                                         <td><?php echo htmlentities($row['categoryname']);?></td>
                                         <td><?php echo htmlentities($row['description']);?></td>
                                         <td><a style="color:blue" href="updatecategory.php?c_id=<?php echo $row['c_id'];?>"><b>Edit</a></td>
-		                                <td><a style="color:#F63" href="deletecategory.php?c_id=<?php echo $row['c_id'];?>"><b>Delete</a></td>
+		                                 <td><a style="color:#F63" href="deletecategory.php?c_id=<?php echo $row['c_id'];?>"><b>Delete</a></td> 
                                      
                                        
                                      <td>
-                                     <?php
-                                          //if($row['status']==1){
-                                             // echo '<p><a href="inactive.php?id='.$row['c_id'].'$status=1">Disable</a></p>';
-                                          //}else{
-                                              //echo '<p><a href="active.php?id='.$row['c_id'].'$status=0">Enable</a></p>';
-                                          //}
-                                          ?>
+                                     <!-- <php
+                                         if($row['status']==1){
+                                             echo '<p><a href="inactive_category.php?id='.$row['c_id'].'$status=1">Disable</a></p>';
+                                          }else{
+                                              echo '<p><a href="active_category.php?id='.$row['c_id'].'$status=0">Enable</a></p>';
+                                          }
+                                          ?> -->
                                      <!--<td><a href="updatecategory.php?c_id=<?php echo $row['c_id']?>">update</a></td>-->
                                     </tr>
                                     <?php $cnt=$cnt+1; } ?>

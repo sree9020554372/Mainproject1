@@ -5,14 +5,15 @@ include('connection.php');
    
 if(isset($_POST['submited']))
   {
-   
+
+    $c_id=$_POST['c_id'];
     $cid=$_POST['cid'];
     $ctime=$_POST['ctime'];
     $etime=$_POST['etime'];
     
 
  
-    $query1=mysqli_query($conn," INSERT INTO `tbl_shedule`(`cid`, `ctime`,`etime`, `status`) VALUES('$cid', '$ctime','$etime','active')");
+    $query1=mysqli_query($conn," INSERT INTO `tbl_shedule`(`c_id`,`cid`, `ctime`,`etime`, `status`) VALUES('$c_id','$cid', '$ctime','$etime','active')");
     //$result1 = mysqli_query($conn,$query1);
     if ($query1) {
     	echo "<script>alert('shedule has been added.');</script>"; 
@@ -60,6 +61,8 @@ if(isset($_POST['submited']))
     <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css" />
+
 
     <link rel="stylesheet" href="assets/css/style.css">
 
@@ -136,6 +139,13 @@ if(isset($_POST['submited']))
                         <ul class="sub-menu children dropdown-menu">
                            
                             <li><i class="menu-icon fa fa-th"></i><a href="manage_leave.php">Leave Request</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children active dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Master</a>
+                        <ul class="sub-menu children dropdown-menu">
+                           
+                            <li><i class="menu-icon fa fa-th"></i><a href="viewleave.php">Leave Request</a></li>
                         </ul>
                     </li>
                    
@@ -301,7 +311,7 @@ if(isset($_POST['submited']))
 
               
 
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-12">
                                                 <div class="card">
                                                     <div class="card-header">
                                                         <strong>ADD CLASSES</strong> 
@@ -357,14 +367,69 @@ while($row=mysqli_fetch_array($sql))
                                                                         </select>
                                                                     </div>
                                                                 </div>-->
-                                                            <div class="row form-group">
-                                                                <div class="col col-md-13"><label for="text-input" class=" form-control-label">Start time</label></div>
-                                                                <div class="col-12 col-md-19"><input type="time" id="ctime" name="ctime" placeholder="enter class name"   class="form-control" ><small class="form-text text-muted"></small></div>
-                                                            </div>
-                                                            <div class="row form-group">
-                                                                <div class="col col-md-13"><label for="text-input" class=" form-control-label">End time</label></div>
-                                                                <div class="col-12 col-md-19"><input type="time" id="time" name="etime" rows="9" placeholder="Content..." class="form-control"><small class="form-text text-muted"></small></div>
-                                                            </div>    
+                                                                <!-- <div class="row form-group">
+                                                                     <div class="col col-md-13"><label for="ctime" class=" form-control-label">Start time</label></div>
+                                                                     <div class="col-12 col-md-15"><input type="time" id="ctime" name="ctime" placeholder="Enter start time" class="form-control" required pattern="^(0?[1-9]|1[0-2]):[0-5][0-9] (am|pm|AM|PM)$"><small class="form-text text-muted"></small></div>
+                                                                 </div> -->
+                                                                 <!-- <div class="row form-group">
+                                                                       <div class="col col-md-13"><label for="ctime" class=" form-control-label">Start time</label></div>
+                                                                        <div class="col-12 col-md-15"><div class="input-group timepicker"><input type="text" id="ctime" name="ctime" placeholder="Enter start time" class="form-control" required pattern="^(0?[1-9]|1[0-2]):[0-5][0-9] (am|pm)$"><span class="input-group-addon"><i class="far fa-clock"></i></span></div></div>
+                                                                </div> -->
+
+                                                                <div class="row form-group">
+  <div class="col col-md-13"><label for="ctime" class=" form-control-label">Start time</label></div>
+  <div class="col-12 col-md-15"><div class="input-group timepicker"><input type="text" id="ctime" name="ctime" placeholder="Enter start time" class="form-control" required onchange="validateInput()"><span><i class="far fa-clock"></i></span></div><span id="msg2" style="color:red;"></span></div>
+</div>
+<script>
+function validateInput() {
+    var input = document.getElementById("ctime").value;
+    //var pattern = /^(0?[1-9]|1[0-2]) (am|pm)$/; // regular expression pattern to match time in "hh am/pm" format
+    var pattern = /^(0?[1-9]|1[0-2])\s?(am|pm)$/;
+
+    if (!input.match(pattern)) {
+        document.getElementById('msg2').innerHTML = "Please enter a valid time in 'hh am/pm' format."; 
+        document.getElementById("ctime").value = "";
+        return false;
+    }
+    
+    document.getElementById('msg2').innerHTML = "";
+    return true;
+}
+</script>
+
+
+<div class="row form-group">
+  <div class="col col-md-13"><label for="ctime" class=" form-control-label">End time</label></div>
+  <div class="col-12 col-md-15"><div class="input-group timepicker"><input type="text" id="etime" name="etime" placeholder="Enter end time" class="form-control" required onchange="validate()"><span><i class="far fa-clock"></i></span></div><span id="msg4" style="color:red;"></span></div>
+</div>
+
+<!-- <span class="input-group-addon"> -->
+<script>
+function validate() {
+    var input = document.getElementById("ctime").value;
+    //var pattern = /^(0?[1-9]|1[0-2]) (am|pm)$/; // regular expression pattern to match time in "hh am/pm" format
+    var pattern = /^(0?[1-9]|1[0-2])\s?(am|pm)$/;
+
+    if (!input.match(pattern)) {
+        document.getElementById('msg4').innerHTML = "Please enter a valid time in 'hh am/pm' format."; 
+        document.getElementById("etime").value = "";
+        return false;
+    }
+    
+    document.getElementById('msg4').innerHTML = "";
+    return true;
+}
+</script>
+
+
+
+
+
+
+
+
+
+                                                              
                                                            <!-- <div class="row form-group">
                                                                 <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">description</label></div>
                                                                 <div class="col-12 col-md-9"><textarea name="description" id="description" rows="9" placeholder="Content..." class="form-control"></textarea></div>
@@ -392,6 +457,7 @@ while($row=mysqli_fetch_array($sql))
                             <script src="vendors/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 
                             <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js"></script>
                             <script src="assets/js/main.js"></script>
 </body>
 </html>

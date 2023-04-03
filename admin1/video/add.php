@@ -112,16 +112,14 @@
                     </li>
 
                   
-                    </li>
-                    <h3 class="menu-title">Extras</h3><!-- /.menu-title -->
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
+                    <li class="menu-item-has-children active dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Master</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-login.html">Login</a></li>
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-register.html">Register</a></li>
-                            <li><i class="menu-icon fa fa-paper-plane"></i><a href="pages-forget.html">Forget Pass</a></li>
+                           
+                            <li><i class="menu-icon fa fa-th"></i><a href="viewleave.php">Leave Request</a></li>
                         </ul>
                     </li>
+                   
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -269,7 +267,7 @@
             ?>
                
 
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-12">
                                                 <div class="card">
                                                     <div class="card-header">
                                                         <strong>ADD Video</strong> 
@@ -282,6 +280,159 @@
                                                                     <p class="form-control-static">Username</p>
                                                                 </div>
                                                             </div>-->
+
+                                                            <?php
+
+
+
+$sql=mysqli_query($conn,"SELECT * FROM tbl_category WHERE STATUS='active'"); 
+?>
+<label>Category Name</label><br>
+
+     
+<select   name="c_id" id="categoryname" onchange="showResult(this.value)" class="form-control m-bot15" required >
+<option value="">--select--</option>
+<?php
+while($row=mysqli_fetch_array($sql))
+{
+
+?>
+<option value="<?php echo $row[0] ?>" ><?php echo $row[1] ?></option>
+
+<?php
+  
+}
+?>
+
+</select></div>
+
+<?php
+
+
+
+$sql=mysqli_query($conn,"SELECT * FROM tbl_course WHERE STATUS='active'"); 
+?>
+<label>CourseName</label><br>
+
+     
+<select   name="cid" id="cname" onchange="showResult(this.value)" class="form-control m-bot15" required >
+<option value="">--select--</option>
+<?php
+while($row=mysqli_fetch_array($sql))
+{
+
+?>
+<option value="<?php echo $row[0] ?>" ><?php echo $row[3] ?></option>
+
+<?php
+  
+}
+?>
+
+</select>
+
+                                                            <div class="row form-group">
+                                                                <div class="col col-md-13"><label for="text-input" class=" form-control-label">Video Name</label></div>
+                                                                <div class="col-12 col-md-19"><input type="text" id="vname" name="vname" placeholder="enter video name"   class="form-control" required onchange="validateVname();"  ></div>
+                                                                <div class="col-12 col-md-19"><span id="vmsg" style="color:red;"></div>
+                                                            </div>
+
+
+                                                            <script>
+    //<span id="categoryname" style="color:red;"></span>
+function validateVname() {
+    var input = document.getElementById("vname").value;
+    var pattern = /^[A-Za-z]+$/; // regular expression pattern to match only letters
+    
+    if (!input.match(pattern)) {
+        
+        //alert("Please enter only letters for category name.");
+        document.getElementById('vmsg').innerHTML="Only alphabets are allowed!!"; 
+        document.getElementById("vname").value = "";
+               
+                 
+        return false;
+        
+    }
+    document.getElementById('vmsg').innerHTML="";
+     
+    return true;
+    
+}
+</script>
+
+                                                            <div class="row form-group">
+                                                                <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">description</label></div>
+                                                                <!--<div class="col-12 col-md-9"><textarea name="description" id="description" rows="9" placeholder="Content..." class="form-control" required onchange="validatedes();"></textarea></div>-->
+                                                                <div class="col-12 col-md-9">  <textarea rows="9" name="vdescription"  id="vdescription"  onChange="maxlength1(this, 250)" class="form-control"  pattern="^(?:\b\w+\b[\s\r\n]*){1,250}$"></textarea></div>
+                                                                <div class="col col-md-3"> <span id="vname" style="color:red;"></span></div>
+                                                                <div class="col col-md-3"> </div>
+                                                            </div>
+                                                            <script>
+                                                                
+    function maxlength1(element, maxvalue){
+    var q = element.value.split(/[\s]+/).length;
+    if(q > maxvalue){
+        var r = q - maxvalue;
+        //alert("Sorry, you have input "+q+" words into the "+
+        //"text area box you just completed. It can return no more than "+
+        //maxvalue+" words to be processed. Please abbreviate "+
+        //"your text by at least "+r+" words");
+        document.getElementById('vname').innerHTML="Sorry, you have input "+q+" words  "+
+        " for description. It can return no more than "+
+        maxvalue+" "+
+        "Please abbreviate your text by at least "+r+" words"; 
+        document.getElementById("vdescription").value = "";
+        return false;
+    }
+    document.getElementById('vname').innerHTML="";
+    return true;
+}
+</script>
+
+
+<!-- <div class="row form-group">
+  <div class="col col-md-13"><label for="utime" class=" form-control-label">Upload Date</label></div>
+  <div class="col-12 col-md-15"><div class="input-group date"><input type="text" id="utime" name="utime" placeholder="Enter Upload Date and time" class="form-control" required onchange="validate()" value="{{ date_default }}" /><span><i class="far fa-clock"></i></span></div><span id="msg7" style="color:red;"></span></div>
+</div>
+
+<script>
+function validate() {
+    var input = document.getElementById("etime").value;
+    var pattern = /^(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[012])-(20\d\d)\s((0?[1-9]|1[0-2]):([0-5][0-9])\s(am|pm))$/; 
+
+    if (!input.match(pattern)) {
+        document.getElementById('msg7').innerHTML = "Please enter a valid time in 'dd-mm-yyyy hh:mm am/pm' format."; 
+        document.getElementById("utime").value = "";
+        return false;
+    }
+    
+    document.getElementById('msg7').innerHTML = "";
+    return true;
+}
+
+// Set the default value of the input field to the current date and time
+var now = new Date();
+var month = now.getMonth() + 1;
+month = month < 10 ? "0" + month : month;
+var day = now.getDate();
+day = day < 10 ? "0" + day : day;
+var year = now.getFullYear();
+var hours = now.getHours();
+var ampm = hours >= 12 ? "pm" : "am";
+hours = hours % 12;
+hours = hours ? hours : 12; // the hour '0' should be '12'
+var minutes = now.getMinutes();
+minutes = minutes < 10 ? "0" + minutes : minutes;
+var datetime = day + "-" + month + "-" + year + " " + hours + ":" + minutes + " " + ampm;
+document.getElementById("utime").value = datetime;
+</script>
+
+
+ -->
+
+
+
                                                             <div class="row form-group">
                                                                 <div class="col col-md-13"><label for="text-input" class=" form-control-label">Video</label></div>
                                                                 <div class="col-12 col-md-19"><input type="file" id="video" name="video" placeholder="" class="form-control"><small class="form-text text-muted"></small></div>
@@ -292,7 +443,7 @@
                                                                 
                                                                 
                                                             
-                                                            <button name="save" class="btn btn-primary">Save</button>
+                                                            <button name="save" value="save" class="btn btn-primary">Save</button>
                                                             <!--<input type="save" class="btn btn-primary" value="save" name="save" id="save">-->
                                                         </form>
                                                     </div>

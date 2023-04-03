@@ -118,7 +118,13 @@ session_start();
                             <li><i class="menu-icon fa fa-th"></i><a href="manage_leave.php">Leave Request</a></li>
                         </ul>
                     </li>
-
+                    <li class="menu-item-has-children active dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Master</a>
+                        <ul class="sub-menu children dropdown-menu">
+                           
+                            <li><i class="menu-icon fa fa-th"></i><a href="viewleave.php">Leave Request</a></li>
+                        </ul>
+                    </li>
                     <li> 
                  
                     

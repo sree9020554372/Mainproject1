@@ -1,12 +1,15 @@
+
+
 <?php
     date_default_timezone_set('Asia/Manila');
     require_once 'conn.php';
  
-    if(ISSET($_POST['save'])){
-      //  $catid = $_POST['catid'];
-      //  $subcatid = $_POST['subcatid'];
-      //  $cid = $_POST['cid'];
-     //   $title = $_POST['title'];
+    if(isset($_POST['save'])){
+        $c_id = $_POST['c_id'];
+        $cid = $_POST['cid'];
+        $vname = $_POST['vname'];
+        $vdescription = $_POST['vdescription'];
+
         $file_name = $_FILES['video']['name'];
         $file_temp = $_FILES['video']['tmp_name'];
         $file_size = $_FILES['video']['size'];
@@ -19,9 +22,14 @@
                 $name = date("Ymd").time();
                 $location = 'video/'.$name.".".$end;
                 if(move_uploaded_file($file_temp, $location)){
-                    mysqli_query($conn, "INSERT INTO `video` VALUES('', '$name', '$location')") or die(mysqli_error());
-                    echo "<script>alert('Video Uploaded')</script>";
-                    echo "<script>window.location = 'index.php'</script>";
+                    $query = "INSERT INTO `video` (`c_id`,`cid`, `vname`, `vdescription`, `name`, `location`,`status`) VALUES ('$c_id','$cid', '$vname', '$vdescription', '$name', '$location','active')";
+                    $result = mysqli_query($conn, $query);
+                    if($result) {
+                        echo "<script>alert('Video Uploaded')</script>";
+                        echo "<script>window.location = 'index.php'</script>";
+                    } else {
+                        echo "Error: " . mysqli_error($conn);
+                    }
                 }
             }else{
                 echo "<script>alert('Wrong video format')</script>";

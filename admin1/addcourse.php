@@ -168,7 +168,13 @@ move_uploaded_file($_FILES["images"]["tmp_name"],"images/".$img);
                         </ul>
                     </li>
                   
-                 
+                    <li class="menu-item-has-children active dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Master</a>
+                        <ul class="sub-menu children dropdown-menu">
+                           
+                            <li><i class="menu-icon fa fa-th"></i><a href="viewleave.php">Leave Request</a></li>
+                        </ul>
+                    </li>
                    
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -313,7 +319,7 @@ move_uploaded_file($_FILES["images"]["tmp_name"],"images/".$img);
 
                
 
-                                            <div class="col-lg-8">
+                                            <div class="col-lg-12">
                                                 <div class="card">
                                                     <div class="card-header">
                                                         <strong>ADD CATEGORY</strong> 
@@ -366,14 +372,14 @@ while($row=mysqli_fetch_array($sql))
                                                             <script>
     //<span id="categoryname" style="color:red;"></span>
 function validateCname() {
-    var input = document.getElementById("name").value;
+    var input = document.getElementById("cname").value;
     var pattern = /^[A-Za-z]+$/; // regular expression pattern to match only letters
     
     if (!input.match(pattern)) {
         
         //alert("Please enter only letters for category name.");
         document.getElementById('msg1').innerHTML="Only alphabets are allowed!!"; 
-        document.getElementById("name").value = "";
+        document.getElementById("cname").value = "";
                
                  
         return false;
@@ -389,10 +395,59 @@ function validateCname() {
 
                                                             <div class="row form-group">
                                                                 <div class="col col-md-13"><label for="text-input" class=" form-control-label">cstart</label></div>
-                                                                <div class="col-12 col-md-19"><input type="date" id="date" name="cstart" rows="9" placeholder="Content..." class="form-control"><small class="form-text text-muted"></small></div>
+                                                                <div class="col-12 col-md-19"><input type="date" id="cstart" name="cstart" rows="9" placeholder="Content..." class="form-control"  required onchange="validateDate();"><small class="form-text text-muted"></small></div>
+                                                                <div class="col-12 col-md-19"><span id="msg5" style="color:red;"></span></div>
                                                                 
                                                            
                                                             </div>
+                                                            <script>
+// function validateInput() {
+//     var inputDate = document.getElementById("cstart").value;
+//     var dateRegex = /^\d{2}-\d{2}-\d{4}$/; // regular expression to match dd-mm-yyyy format
+//     var startDate = new Date("01-04-2023"); // Change this to the minimum allowed date
+//     var endDate = new Date(); // Change this to the maximum allowed date, or leave it as today's date
+    
+//     if (!inputDate.match(dateRegex)) {
+//         document.getElementById('msg5').innerHTML = "Please enter a valid date in the format dd-mm-yyyy";
+//         document.getElementById("cstart").value = "";
+//         return false;
+//     }
+    
+//     var dateParts = inputDate.split("-");
+//     var dateObj = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
+    
+//     if (dateObj < startDate || dateObj > endDate) {
+//         document.getElementById('msg5').innerHTML = "Please enter a date between " + startDate.toLocaleDateString() + " and " + endDate.toLocaleDateString();
+//         document.getElementById("cstart").value = "";
+//         return false;
+//     }
+    
+//     document.getElementById('msg5').innerHTML = "";
+//     return true;
+// }
+
+function validateDate() {
+  var inputDate = document.getElementById("cstart").value;
+  var startDate = new Date("2023-03-06"); // Change this to the minimum allowed date
+  var endDate = new Date(); // Change this to the maximum allowed date, or leave it as today's date
+  
+  if (!inputDate.match(/^\d{4}-\d{2}-\d{2}$/)) {
+    alert("Please enter a valid date in the format yyyy-mm-dd");
+    return false;
+  }
+  
+  var dateObj = new Date(inputDate);
+  
+  if (dateObj < startDate || dateObj > endDate) {
+    alert("Please enter a date between " + startDate.toDateString() + " and " + endDate.toDateString());
+    return false;
+  }
+  
+  return true;
+}
+
+</script>
+                                                            
 
                       
 
@@ -477,8 +532,8 @@ function validateInput() {
 /(\.pdf|\.jpg|\.png|\.jpeg|\.wpd)$/i;
               
             if (!allowedExtensions.exec(filePath)) {
-                document.getElementById('fname').innerHTML="invalid file format"; 
-                document.getElementById("fname").value = "";
+                document.getElementById('images').innerHTML="invalid file format"; 
+                document.getElementById("images").value = "";
                 //alert('Invalid file type');
                 fileInput.value = '';
                 return false;

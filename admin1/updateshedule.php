@@ -346,18 +346,61 @@ $num2=mysqli_num_rows($query);
   
 ?>
             
-                
+            <div class="row form-group">
+  <div class="col col-md-13"><label for="ctime" class=" form-control-label">Start time</label></div>
+  <div class="col-12 col-md-15"><div class="input-group timepicker"><input type="text" id="ctime" name="ctime" value="<?= ($row!=null) ? $row['ctime'] : "Not Available" ?>" class="form-control" required onchange="validateInput()"><span ><i class="far fa-clock"></i></span></div><span id="msg2" style="color:red;"></span></div>
+</div>
+<script>
+function validateInput() {
+    var input = document.getElementById("ctime").value;
+    //var pattern = /^(0?[1-9]|1[0-2]) (am|pm)$/; // regular expression pattern to match time in "hh am/pm" format
+    var pattern = /^(0?[1-9]|1[0-2])\s?(am|pm)$/;
+
+    if (!input.match(pattern)) {
+        document.getElementById('msg2').innerHTML = "Please enter a valid time in 'hh am/pm' format."; 
+        document.getElementById("ctime").value = "";
+        return false;
+    }
+    
+    document.getElementById('msg2').innerHTML = "";
+    return true;
+}
+</script>
+
+
+<div class="row form-group">
+  <div class="col col-md-13"><label for="ctime" class=" form-control-label">End time</label></div>
+  <div class="col-12 col-md-15"><div class="input-group timepicker"><input type="text" id="etime" name="etime" value="<?= ($row!=null) ? $row['etime'] : "Not Available" ?>" class="form-control" required onchange="validate()"><span ><i class="far fa-clock"></i></span></div><span id="msg4" style="color:red;"></span></div>
+</div>
+
+
+<script>
+function validate() {
+    var input = document.getElementById("ctime").value;
+    //var pattern = /^(0?[1-9]|1[0-2]) (am|pm)$/; // regular expression pattern to match time in "hh am/pm" format
+    var pattern = /^(0?[1-9]|1[0-2])\s?(am|pm)$/;
+
+    if (!input.match(pattern)) {
+        document.getElementById('msg4').innerHTML = "Please enter a valid time in 'hh am/pm' format."; 
+        document.getElementById("etime").value = "";
+        return false;
+    }
+    
+    document.getElementById('msg4').innerHTML = "";
+    return true;
+}
+</script>
             
             
                 
-                                                            <div class="row form-group">
+                                                            <!-- <div class="row form-group">
                                                                 <div class="col col-md-13"><label for="text-input" class=" form-control-label">Start time</label></div>
                                                                 <div class="col-12 col-md-19"><input type="text" id="ctime" name="ctime" placeholder="enter class name"   class="form-control" value="<?= ($row!=null) ? $row['ctime'] : "Not Available" ?>" ><small class="form-text text-muted"></small></div>
                                                             </div>
                                                             <div class="row form-group">
                                                                 <div class="col col-md-13"><label for="text-input" class=" form-control-label">End time</label></div>
                                                                 <div class="col-12 col-md-19"><input type="text" id="time" name="etime" rows="9" placeholder="Content..." class="form-control" value="<?= ($row!=null) ? $row['etime'] : "Not Available" ?>"><small class="form-text text-muted"></small></div>
-                                                            </div>    
+                                                            </div>     -->
                                                            <!-- <div class="row form-group">
                                                                 <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">description</label></div>
                                                                 <div class="col-12 col-md-9"><textarea name="description" id="description" rows="9" placeholder="Content..." class="form-control"></textarea></div>

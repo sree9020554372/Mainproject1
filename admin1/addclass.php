@@ -307,10 +307,10 @@ move_uploaded_file($_FILES["images"]["tmp_name"],"images/".$img);
 
                
 
-                                            <div class="col-lg-8">
+                                            <div class="col-lg-12">
                                                 <div class="card">
                                                     <div class="card-header">
-                                                        <strong>ADD CATEGORY</strong> 
+                                                        <strong>ADD CLASS</strong> 
                                                     </div>
                                                     <div class="card-body card-block">
                                                         <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">

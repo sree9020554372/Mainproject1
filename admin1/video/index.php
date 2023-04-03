@@ -110,19 +110,17 @@
                             <li><i class="menu-icon fa fa-th"></i><a href="manage_leave.php">Leave Request</a></li>
                         </ul>
                     </li>
-                    
+                    <li class="menu-item-has-children active dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Master</a>
+                        <ul class="sub-menu children dropdown-menu">
+                           
+                            <li><i class="menu-icon fa fa-th"></i><a href="viewleave.php">Leave Request</a></li>
+                        </ul>
+                    </li>
 
                   
                     </li>
-                    <h3 class="menu-title">Extras</h3><!-- /.menu-title -->
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-login.html">Login</a></li>
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-register.html">Register</a></li>
-                            <li><i class="menu-icon fa fa-paper-plane"></i><a href="pages-forget.html">Forget Pass</a></li>
-                        </ul>
-                    </li>
+                    
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -263,21 +261,66 @@
 
         <div class="content mt-3">
             <div class="animated fadeIn">
+            <div class="card-body">
+                        <table class="table">
+                                
+              
+              <tr>
+                  <th>S1.NO</th>
+                  <th>Category Name</th>
+                  <th>Class Name</th>
+                  <th>video name</th>
+                
+                  <th>video description</th>
+                  <th>video</th>
+                  <th>Delete</th>
+                  <th>Update</th>
+              </tr>
 
             <?php
             require 'conn.php';
+            $query = mysqli_query($conn, "SELECT tbl_category.c_id, tbl_category.categoryname,tbl_course.cname, tbl_course.cid,video.video_id, video.vname, video.vdescription, video.location ,video.status FROM tbl_category JOIN tbl_course ON tbl_category.c_id = tbl_course.c_id JOIN video ON tbl_course.cid = video.cid ");
 
-            $query = mysqli_query($conn, "SELECT * FROM `video` ORDER BY `video_id` ASC") or die(mysqli_error());
-            while($fetch = mysqli_fetch_array($query)){
+            // $query = mysqli_query($conn, "SELECT * FROM `video` ORDER BY `video_id` ASC") or die(mysqli_error());
+           // while($fetch = mysqli_fetch_array($query)){
+            $cnt=1;
+            while($row=mysqli_fetch_array($query)){
             ?>
+
+<tr>
+                  <td><?php echo htmlentities($cnt);?></td>
+                  <td><?php echo htmlentities($row['categoryname']);?></td>"
+                  <td><?php echo htmlentities($row['cname']);?></td>
+                  <td><?php echo htmlentities($row['vname']);?></td>
+                 
+                
+                  <td> <?php echo htmlentities($row['vdescription']);?></td>
+                  <td><video width="100%" height="140" controls><source src="<?php echo $row['location']?>"></video></div></td>
+                 
+                  <td><a style="color:blue" href="updateadd.php?video_id=<?php echo $row['video_id'];?>"><b>Edit</a></td>
+		        <td><a style="color:#F63" href="deletevideo.php?videoid=<?php echo $row['video_id'];?>"><b>Delete</b></a></td>
+                                     
                
+               
+
+<!-- 
                                                             <div class="row form-group">
                                                                 <div class="col col-md-13"><label for="text-input" class=" form-control-label">Video</label></div>
                                                                 <div class="col-12 col-md-19"> <video width="100%" height="440" controls><source src="<?php echo $fetch['location']?>"></video></div>
                                                             </div>
-                                                            <?php
-            }
-        ?>
+                                                            <td> -->
+               <?php
+                    //if($row['status']==1){
+                        //echo '<p><a href="inactive.php?id='.$row['cid'].'$status=1">Disable</a></p>';
+                    //}else{
+                       // echo '<p><a href="active.php?id='.$row['cid'].'$status=0">Enable</a></p>';
+                    //}
+                    ?>
+              <!--<td><a href="courseupdate1111.php?cid=<?php echo $row['cid']?>">update</a></td>-->
+              </tr>
+              <?php $cnt=$cnt+1; } ?>
+              
+      </table>
                                             <!--<div class="col-lg-6">
                                                 <div class="card">
                                                     <div class="card-header">

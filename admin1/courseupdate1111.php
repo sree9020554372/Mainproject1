@@ -15,15 +15,16 @@ if(isset($_POST['update']))
         
 $query="UPDATE tbl_course SET cname='$cname',cstart='$cstart',cost='$cost' ,description='$description' where cid='$cid' ";
 $query_run=mysqli_query($conn,$query);
-if($query_run)
-{
-    $_SESSION['status'] = "Course updated successfully";
-    header('location:viewcourse.php');
+if ($query) {
+    echo "<script>alert('Course updated succesfully.');</script>"; 
+        echo "<script>window.location.href = 'viewcourse.php'</script>";   
+
 }
 else
 {
-    echo "no";
+echo "<script>alert('Something Went Wrong. Please try again.');</script>";  	
 }
+
 }
 
 ?>
@@ -458,7 +459,7 @@ function validateInput() {
                 </div>-->
                
                 <input type="hidden" class="btn btn-primary" value="cid" name="cid" id="cid">
-                <input type="submit" class="btn btn-primary" value="update" name="update" id="update">
+                <button class="btn btn-primary" value="update" name="update" id="update"></button>
 
                                                             
                 

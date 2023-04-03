@@ -310,17 +310,22 @@
               
               <tr>
               <th>No</th>
+              <th>category Name</th>
+              <th>Course Name</th>
+              <th>Description</th>
               <th>Pdf</th>
             <th>Download</th>
-            <th>Delete</th>
             <th>Update</th>
+            <th>Delete</th>
+           
               </tr>
           
               
 
               <?php
               include 'db.php';
-              $query=mysqli_query($conn,"select * from pdf_file ");             
+              //$query=mysqli_query($conn,"select * from pdf_file where status='active'  ");  
+              $query=mysqli_query($conn,"SELECT tbl_category.c_id, tbl_category.categoryname,tbl_course.cname, tbl_course.cid, pdf_file.id, pdf_file.desciption, pdf_file.status FROM tbl_category JOIN tbl_course ON tbl_category.c_id = tbl_course.c_id JOIN pdf_file ON tbl_course.cid = pdf_file.cid");                        
 $cnt=1;
 while($row=mysqli_fetch_array($query))
 {
@@ -328,7 +333,9 @@ while($row=mysqli_fetch_array($query))
 ?>                                  
               <tr>
                   <td><?php echo htmlentities($cnt);?></td>
-                 
+                  <td><?php echo htmlentities($row['categoryname']);?></td>
+                  <td><?php echo htmlentities($row['cname']);?></td>
+                  <td><?php echo htmlentities($row['description']);?></td>
                   <td><?php echo htmlentities($row['pdf']);?></td>
                   <td><a href="display_pdf.php?id=<?php echo $row['id']?>">View</a></td>
                   <td><a style="color:blue" href="updatepdf.php?id=<?php echo $row['id'];?>"><b>Edit</a></td>

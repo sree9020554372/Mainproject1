@@ -30,11 +30,17 @@ if(isset($_POST['BookNow']))
    
    $query1=mysqli_query($conn,"INSERT INTO `tbl_booking`(login_id,username,email,cname,cost,status) VALUES('$login_id','$a','$email','$cname','$cost','active')");
     //$result1 = mysqli_query($conn,$query1);
+	
     if ($query1) {
     	echo "<script>alert('booking has been added.');</script>"; 
     		echo "<script>window.location.href = 'viewbooking.php'</script>";   
    
   }
+  else if($conn->query($query1)=== TRUE)
+                {
+                  echo "<script> alert('Registered Successfully'); </script>";
+                  header('location:login.php');
+                }
   else
     {
     echo "<script>alert('Something Went Wrong. Please try again.');</script>";  	

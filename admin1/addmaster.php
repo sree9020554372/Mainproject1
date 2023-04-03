@@ -17,12 +17,13 @@ if(isset($_POST['submited']))
     $gender=$_POST['gender'];
     $username=$_POST['username'];
     $password=$_POST['password'];
+    
  //$img = $_FILES['images']['name'];
     //move_uploaded_file($_FILES["images"]["tmp_name"], "../uploads/".$img);
     
 $img=$_FILES["img"]["name"];
 $extension = substr($img,strlen($img)-4,strlen($img));
-$allowed_extensions = array(".jpg","jpeg",".png",".gif");
+$allowed_extensions = array(".jpg","jpeg",".png",".gif",".pdf");
 if(!in_array($extension,$allowed_extensions))
 {
 
@@ -55,28 +56,46 @@ echo "<script>alert('Profile Pics has Invalid format. Only jpg / jpeg/ png /gif 
 else
 {
 
-
- 
-    $query1=mysqli_query($conn," INSERT INTO `tbl_master`(`name`, `email`,`phoneno`,`age`,`gender`,`Qualification`,`exp`,`img`,`idproof`,`certificates`,`username`,`password`,`status` ) VALUES('$name','$email','$phoneno','$age',' $gender','$Qualification','$exp','$img','$idproof','$certificates','$username','$password','active')");
-    //$result1 = mysqli_query($conn,$query1);
-    if ($query1) {
-    	echo "<script>alert('Master has been added.');</script>"; 
-    		echo "<script>window.location.href = 'addmaster.php'</script>";   
-   
-  }
-  else
+    $username = mysqli_real_escape_string($conn, $username);
+    $duplicate = mysqli_query($conn, "SELECT * from tb_login WHERE username='$username'");
+    if(mysqli_num_rows($duplicate)>0)
     {
-    echo "<script>alert('Something Went Wrong. Please try again.');</script>";  	
+      echo "<script> alert('Already Registered'); </script>";
+      // header('location:login.php');
+      
     }
-}
-  
-}
+    else
+    {
 
-} 
+    $sql="insert into tb_login(`username`,`password`,`role`,`status`) VALUES ('$username','$password','master',3)";  
+    if($conn->query($sql)=== TRUE)
+    {
+        $val="select login_id from tb_login where username='".$username."'";
+        if($res=$conn->query($val))
+            {
+              foreach($res as $data)
+              {
+                $query1=mysqli_query($conn," INSERT INTO `tbl_master`(`name`, `email`,`phoneno`,`age`,`gender`,`Qualification`,`exp`,`img`,`idproof`,`certificates`,`username`,`password`,`status` ) VALUES('$name','$email','$phoneno','$age',' $gender','$Qualification','$exp','$img','$idproof','$certificates','$username','$password','3')");
+                $result1 = mysqli_query($conn,$query1);
+                if ($query1) {
+                        	echo "<script>alert('Master has been added.');</script>"; 
+                        		echo "<script>window.location.href = 'addmaster.php'</script>";   
+                       
+                      }
+                      else
+                        {
+                        echo "<script>alert('Something Went Wrong. Please try again.');</script>";  	
+                        }
+              }
+            }
+    }
+    }
   }
-
+}
+}
+  }
 ?>
-    
+
 
 
 
@@ -182,6 +201,13 @@ else
                         <ul class="sub-menu children dropdown-menu">
                            
                             <li><i class="menu-icon fa fa-th"></i><a href="manage_leave.php">Leave Request</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children active dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Master</a>
+                        <ul class="sub-menu children dropdown-menu">
+                           
+                            <li><i class="menu-icon fa fa-th"></i><a href="viewleave.php">Leave Request</a></li>
                         </ul>
                     </li>
                   
