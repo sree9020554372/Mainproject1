@@ -82,7 +82,7 @@ if(isset($_POST['ApplyLeave']))
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="userindex.php">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="userview.php">Join classes</a></li>
 						<li class="nav-item"><a class="nav-link" href="placeorder.php">view schedules</a></li>
 						

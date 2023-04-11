@@ -256,15 +256,7 @@ session_start();
                             <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
                         </a>
 
-                        <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
-
-                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
-
-                            <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
-
-                            <a class="nav-link" href="../index.html"><i class="fa fa-power-off"></i> Logout</a>
-                        </div>
+                       
                     </div>
 
                     <div class="language-select dropdown" id="language-select">
@@ -328,7 +320,6 @@ session_start();
               
              <tr>
                   <th>S1.NO</th>
-                  <th>Student Name</th>
                   <th>Course Name</th>
                   <th>Leave Date</th>
                   <th>Approve/Reject</th>
@@ -346,7 +337,7 @@ while($row=mysqli_fetch_array($query))
 ?>                                  
               <tr>
                   <td><?php echo htmlentities($cnt);?></td>
-                  <td><?php echo htmlentities($row['sname']);?></td>
+                 
                   <td><?php echo htmlentities($row['coursename']);?></td>
                   <td><?php echo htmlentities($row['date']);?></td>
                  

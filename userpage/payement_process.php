@@ -8,8 +8,8 @@ if(isset($_POST['payment_id']) && isset($_POST['price'])){
     $payment_status="completed";
     
    
-    mysqli_query($conn,"INSERT INTO `tbl_payement`(`username`, `price`,`payment_id`,`payment_status`)
-     VALUES ('$a','$price','$payment_id', '$payment_status')");
+    mysqli_query($conn,"INSERT INTO `tbl_payement`(`payment_id`, `username`, `price`,`payment_status`)
+     VALUES ('$payment_id', '$a', '$price', '$payment_status')");
     
 }
 ?>

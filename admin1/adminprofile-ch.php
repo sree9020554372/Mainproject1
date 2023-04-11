@@ -29,13 +29,13 @@
     $query = "UPDATE tb_login SET password='$password' WHERE login_id='$login_id'";
     $query_run = mysqli_query($conn, $query);
     
-    //     if($query_run) {
-    //     echo "<script>alert('profile has been updated.');</script>"; 
-    //     echo "<script>window.location.href = 'adminprofile.php'</script>";
-    //   }
-    //   else {
-    //     echo "<script>alert('Something Went Wrong. Please try again.');</script>";
-    //   }
+        if($query_run) {
+        echo "<script>alert('profile has been updated.');</script>"; 
+        echo "<script>window.location.href = 'adminprofile.php'</script>";
+      }
+      else {
+        echo "<script>alert('Something Went Wrong. Please try again.');</script>";
+      }
      }
  
 
@@ -147,7 +147,7 @@
                             <li><i class="menu-icon fa fa-th"></i><a href="manage_shedule.php">Manage Shedule</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children active dropdown">
+                    <!-- <li class="menu-item-has-children active dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Course Related</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-th"></i><a href="video/add.php">Add Video</a></li>
@@ -155,7 +155,7 @@
                             <li><i class="menu-icon fa fa-th"></i><a href="pdf/insert.php">Add pdf</a></li>
                             <li><i class="menu-icon fa fa-th"></i><a href="pdf/pdfview.php">View pdf</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li class="menu-item-has-children active dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Students</a>
                         <ul class="sub-menu children dropdown-menu">
@@ -244,7 +244,7 @@
                                 <span class="count bg-danger">5</span>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="notification">
-                                <p class="red">You have 3 Notification</p>
+                                <!-- <p class="red">You have 3 Notification</p>
                                 <a class="dropdown-item media bg-flat-color-1" href="#">
                                 <i class="fa fa-check"></i>
                                 <p>Server #1 overloaded.</p>
@@ -298,7 +298,7 @@
                                 <span class="message media-body">
                                     <span class="name float-left">Rachel Santos</span>
                                     <span class="time float-right">15 minutes ago</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur</p> -->
                                 </span>
                             </a>
                             </div>
@@ -315,9 +315,7 @@
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link" href="adminprofile.php"><i class="fa fa-user"></i> My Profile</a>
 
-                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
-
-                            <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
+                          
 
                             <a class="nav-link" href="../logout.php"><i class="fa fa-power-off"></i> Logout</a>
                         </div>

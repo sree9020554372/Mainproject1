@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
       else
       {
   
-        $sql="insert into tb_login(`username`,`password`,`role`,`status`) VALUES ('$username','$password','admin',3)";
+        $sql="insert into tb_login(`username`,`password`,`role`,`status`) VALUES ('$username','$password','admin',1)";
 		
         if($conn->query($sql)=== TRUE)
         {
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
               {
                 $l_id=$data['login_id'];
                 $sql1="insert into tbl_reg(`login_id`,`full_name`,`email`,`phone_no`,`dob`,`gender`,`address`,`status`) 
-                values('$l_id','$full_name','$email','$phone_no','$dob','$gender','$address',3)";
+                values('$l_id','$full_name','$email','$phone_no','$dob','$gender','$address',1)";
                 if($conn->query($sql1)=== TRUE)
                 {
                   echo "<script> alert('Registered Successfully'); </script>";

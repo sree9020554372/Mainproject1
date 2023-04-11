@@ -271,14 +271,11 @@ session_start();
                             <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
                         </a>
 
-                        <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
+                       <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="admin-profile.php"><i class="fa fa-user"></i> My Profile</a>
 
-                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
-
-                            <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
-
-                            <a class="nav-link" href="../index.html"><i class="fa fa-power-off"></i> Logout</a>
+                       
+                            <a class="nav-link" href="../logout.php"><"><i class="fa fa-power-off"></i> Logout</a>
                         </div>
                     </div>
 

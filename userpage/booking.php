@@ -51,10 +51,48 @@ if(isset($_POST['BookNow']))
 
 }
 
-?>
+?> 
 
- 
+<!-- <php
 
+include('connection.php');
+session_start();
+error_reporting(0); 
+$a=$_SESSION['username'];
+//echo $_SESSION['username'];
+
+if(isset($a))
+{
+    $login_id=$_GET['login_id'];
+    $cname= $_POST['cname'];
+
+    // Check if the user has already registered for the course
+    $query = "SELECT * FROM tbl_booking WHERE login_id='$login_id' AND cname='$cname' AND status='active'";
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_num_rows($result) > 0) {
+        echo "<script>alert('You have already registered for this course.');</script>";
+        echo "<script>window.location.href = 'viewbooking.php'</script>"; 
+    } else {
+        // Insert a new booking record
+        $username= $_POST['username'];
+        $email= $_POST['email'];
+        $cost= $_POST['cost'];
+
+        $query1=mysqli_query($conn,"INSERT INTO `tbl_booking`(login_id,username,email,cname,cost,status) VALUES('$login_id','$a','$email','$cname','$cost','active')");
+
+        if ($query1) {
+            echo "<script>alert('Booking has been added.');</script>"; 
+            echo "<script>window.location.href = 'viewbooking.php'</script>";   
+        } else {
+            echo "<script>alert('Something went wrong. Please try again.');</script>";      
+        }
+    }
+}
+
+
+ ?>
+ -->
 
 
  
@@ -112,7 +150,7 @@ if(isset($_POST['BookNow']))
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="userindex.php">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="userview.php">Join classes</a></li>
 						<li class="nav-item"><a class="nav-link" href="viewmaster.php">view schedules</a></li>
 						

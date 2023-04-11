@@ -5,7 +5,7 @@
   $a=$_SESSION['username'];
   //echo $_SESSION['username'];
     include('connection.php');
-   
+    //$reg_id=$_REQUEST['reg_id'];
    // if(isset($a))
     //{
     //$sql="SELECT username FROM tb_login WHERE login_id='$login_id'";
@@ -122,7 +122,7 @@
                             <li><i class="menu-icon fa fa-th"></i><a href="manage_shedule.php">Manage Shedule</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children active dropdown">
+                    <!-- <li class="menu-item-has-children active dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Course Related</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-th"></i><a href="video/add.php">Add Video</a></li>
@@ -130,7 +130,7 @@
                             <li><i class="menu-icon fa fa-th"></i><a href="pdf/insert.php">Add pdf</a></li>
                             <li><i class="menu-icon fa fa-th"></i><a href="pdf/pdfview.php">View pdf</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li class="menu-item-has-children active dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Students</a>
                         <ul class="sub-menu children dropdown-menu">
@@ -141,51 +141,7 @@
                     
                     
                     
-                    <!--<li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-th"></i><a href="forms-basic.html">Basic Form</a></li>
-                            <li><i class="menu-icon fa fa-th"></i><a href="forms-advanced.html">Advanced Form</a></li>
-                        </ul>
-                    </li>
-
-                    <!--<h3 class="menu-title">Icons</h3><!-- /.menu-title 
-
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Icons</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-fort-awesome"></i><a href="font-fontawesome.html">Font Awesome</a></li>
-                            <li><i class="menu-icon ti-themify-logo"></i><a href="font-themify.html">Themefy Icons</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Charts</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-line-chart"></i><a href="charts-chartjs.html">Chart JS</a></li>
-                            <li><i class="menu-icon fa fa-area-chart"></i><a href="charts-flot.html">Flot Chart</a></li>
-                            <li><i class="menu-icon fa fa-pie-chart"></i><a href="charts-peity.html">Peity Chart</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Maps</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-map-o"></i><a href="maps-gmap.html">Google Maps</a></li>
-                            <li><i class="menu-icon fa fa-street-view"></i><a href="maps-vector.html">Vector Maps</a></li>
-                        </ul>-->
-                    </li>
-                    <!--<h3 class="menu-title">Extras</h3><!-- /.menu-title -->
-                   <!---- <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-login.html">Login</a></li>
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-register.html">Register</a></li>
-                            <li><i class="menu-icon fa fa-paper-plane"></i><a href="pages-forget.html">Forget Pass</a></li>
-                        </ul>
-                    </li>-->
+                 
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -219,7 +175,7 @@
                                 <span class="count bg-danger">5</span>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="notification">
-                                <p class="red">You have 3 Notification</p>
+                                <!-- <p class="red">You have 3 Notification</p>
                                 <a class="dropdown-item media bg-flat-color-1" href="#">
                                 <i class="fa fa-check"></i>
                                 <p>Server #1 overloaded.</p>
@@ -273,7 +229,7 @@
                                 <span class="message media-body">
                                     <span class="name float-left">Rachel Santos</span>
                                     <span class="time float-right">15 minutes ago</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur</p> -->
                                 </span>
                             </a>
                             </div>
@@ -282,17 +238,37 @@
                 </div>
 
                 <div class="col-sm-5">
+
+                <?php
+            // $reg_id=$_REQUEST['reg_id'];
+              $query=mysqli_query($conn, "SELECT * FROM tbl_reg WHERE  STATUS='1' ");
+              //$query=mysqli_query($conn, "SELECT * FROM tbl_reg WHERE reg_id='$reg_id' AND STATUS='1' ");
+              //"SELECT tbl_reg.* 
+              //FROM tbl_reg 
+              //INNER JOIN tb_login ON tbl_reg.login_id = tb_login.username WHERE tb_login.username = 'a' ");
+              
+           
+              $num2=mysqli_num_rows($query);
+              if($num2 > 0){
+                  $row= mysqli_fetch_array($query);
+             }
+              else{
+                  $row= null;
+              }
+          
+          
+          
+          
+          ?>
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="admin-profile.php"><i class="fa fa-user"></i> My Profile</a>
+                            <a class="nav-link" href="admin-profile.php?reg_id=<?php echo $row['reg_id'];?>"> <i class="fa fa-user"></i> My Profile</a>
 
-                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
-
-                            <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
+                         
 
                             <a class="nav-link" href="../logout.php"><i class="fa fa-power-off"></i> Logout</a>
                         </div>
@@ -357,8 +333,9 @@
                         <main id="main" class="main">
 
                         <?php
-             //$reg_id=$_REQUEST['reg_id'];
-              $query=mysqli_query($conn, "SELECT * FROM tbl_reg WHERE STATUS='3' ");
+            // $reg_id=$_REQUEST['reg_id'];
+              $query=mysqli_query($conn, "SELECT * FROM tbl_reg WHERE  STATUS='1' ");
+              //$query=mysqli_query($conn, "SELECT * FROM tbl_reg WHERE reg_id='$reg_id' AND STATUS='1' ");
               //"SELECT tbl_reg.* 
               //FROM tbl_reg 
               //INNER JOIN tb_login ON tbl_reg.login_id = tb_login.username WHERE tb_login.username = 'a' ");

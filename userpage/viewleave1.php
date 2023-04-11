@@ -162,8 +162,9 @@ if (!empty($_SESSION['logged_in'])) {
               
               <tr>
                   <th>S1.NO</th>
-                  <th> Student Name</th>
+             
                   <th>Course Name</th>
+				  <th>Reason</th>
                   <th>Date</th>
                   
                  
@@ -181,9 +182,9 @@ while($row=mysqli_fetch_array($query))
 ?>                                  
               <tr>
                   <td><?php echo htmlentities($cnt);?></td> 
-                  <td><?php echo htmlentities($row['sname']);?></td>
+                  
                   <td><?php echo htmlentities($row['coursename']);?></td>
-                 
+                  <td><?php echo htmlentities($row['reason']);?></td>
                   <td> <?php echo htmlentities($row['date']);?></td>
                   
                  

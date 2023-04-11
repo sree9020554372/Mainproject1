@@ -334,7 +334,7 @@ session_start();
                                                 <div class="card-body">
 												<p class="card-text">'.$name.'</p>
                                                     
-												<a href="booking.php?id='.$mid.'" class="btn btn-primary">View Details</a>
+												<a href="masterview.php?id='.$mid.'" class="btn btn-primary">View Details</a>
 												
 												
                                                 </div>

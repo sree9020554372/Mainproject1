@@ -151,7 +151,7 @@ move_uploaded_file($_FILES["images"]["tmp_name"],"images/".$img);
                             <li><i class="menu-icon fa fa-th"></i><a href="manage_shedule.php">Manage Shedule</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children active dropdown">
+                    <!-- <li class="menu-item-has-children active dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Course Related</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-th"></i><a href="video/add.php">Add Video</a></li>
@@ -159,7 +159,7 @@ move_uploaded_file($_FILES["images"]["tmp_name"],"images/".$img);
                             <li><i class="menu-icon fa fa-th"></i><a href="pdf/insert.php">Add pdf</a></li>
                             <li><i class="menu-icon fa fa-th"></i><a href="pdf/pdfview.php">View pdf</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li class="menu-item-has-children active dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Students</a>
                         <ul class="sub-menu children dropdown-menu">
@@ -277,13 +277,10 @@ move_uploaded_file($_FILES["images"]["tmp_name"],"images/".$img);
                         </a>
 
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
+                            <a class="nav-link" href="admin-profile.php"><i class="fa fa-user"></i> My Profile</a>
 
-                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
-
-                            <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
-
-                            <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Logout</a>
+                       
+                            <a class="nav-link" href="../logout.php"><"><i class="fa fa-power-off"></i> Logout</a>
                         </div>
                     </div>
 
@@ -426,27 +423,27 @@ function validateCname() {
 //     return true;
 // }
 
-function validateDate() {
-  var inputDate = document.getElementById("cstart").value;
-  var startDate = new Date("2023-03-06"); // Change this to the minimum allowed date
-  var endDate = new Date(); // Change this to the maximum allowed date, or leave it as today's date
+// function validateDate() {
+//   var inputDate = document.getElementById("cstart").value;
+//   var startDate = new Date("2023-03-06"); // Change this to the minimum allowed date
+//   var endDate = new Date(); // Change this to the maximum allowed date, or leave it as today's date
   
-  if (!inputDate.match(/^\d{4}-\d{2}-\d{2}$/)) {
-    alert("Please enter a valid date in the format yyyy-mm-dd");
-    return false;
-  }
+//   if (!inputDate.match(/^\d{4}-\d{2}-\d{2}$/)) {
+//     alert("Please enter a valid date in the format yyyy-mm-dd");
+//     return false;
+//   }
   
-  var dateObj = new Date(inputDate);
+//   var dateObj = new Date(inputDate);
   
-  if (dateObj < startDate || dateObj > endDate) {
-    alert("Please enter a date between " + startDate.toDateString() + " and " + endDate.toDateString());
-    return false;
-  }
+//   if (dateObj < startDate || dateObj > endDate) {
+//     alert("Please enter a date between " + startDate.toDateString() + " and " + endDate.toDateString());
+//     return false;
+//   }
   
-  return true;
-}
+//   return true;
+// }
 
-</script>
+// </script>
                                                             
 
                       

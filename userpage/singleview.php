@@ -58,7 +58,7 @@
               </button>
               <div class="collapse navbar-collapse" id="navbars-rs-food">
                   <ul class="navbar-nav ml-auto">
-                      <li class="nav-item"><a class="nav-link" href="index.php">Dahboard</a></li>
+                      <li class="nav-item"><a class="nav-link" href="userindex.php">Dahboard</a></li>
                       <li class="nav-item"><a class="nav-link" href="package.php">view course</a></li>
                       <li class="nav-item"><a class="nav-link" href="placeorder.php"></a></li>
                       

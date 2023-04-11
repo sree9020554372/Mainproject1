@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
       $_SESSION['message']="Welcome";
       $_SESSION['username'] = $username;
-       header("location:userpage/index.php");
+       header("location:userpage/userindex.php");
       exit(0);
     }
     else if($_SESSION['role']=='master')
