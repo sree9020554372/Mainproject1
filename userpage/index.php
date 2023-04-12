@@ -1,3 +1,25 @@
+<?php
+	include ('connection.php');
+
+    session_start();
+    if($_SESSION['username']){
+        $a=$_SESSION['username'];
+        // echo $e;
+    }else{
+        header("location:index.php");
+    }
+	
+// 	session_start();
+//   $a=$_SESSION['username'];
+//   //echo $_SESSION['username'];
+//     include('connection.php');
+
+
+//     $q="select login_id from tb_login where username='$a'";
+//     $res=mysqli_query($conn,$q);
+//     $row=mysqli_fetch_array($res);
+//     $login_id= $row['login_id'];
+    ?>
 <!DOCTYPE html>
 <html lang="en"><!-- Basic -->
 <head>
@@ -78,7 +100,33 @@
 						</li>-->
 						
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">My Account</a>
+
+                        <div class="profile-details">
+                            
+      <?php
+
+$q="select login_id from tb_login where username='$a'";
+$res=mysqli_query($conn,$q);
+$row=mysqli_fetch_array($res);
+$login_id= $row['login_id'];
+                                $sql3=mysqli_query($conn,"SELECT login_id from tb_login where username='$a'");
+                                while($row=mysqli_fetch_array($sql3))
+                                {
+                                  $a=$row['username'];
+                                }
+                                $sql4=mysqli_query($conn,"SELECT r.full_name from tbl_reg r join tb_login l on r.login_id= l.login_id where r.login_id='$a' ");
+                                while($row=mysqli_fetch_array($sql4))
+                                {
+                                  $b=$row['full_name'];
+                                ?>
+        <img src="images/profile/profileuser.png" alt="">
+        <span class="user_name"><?php echo $row['full_name']; ?></span>
+        <i class='bx bx-chevron-down' ></i>
+      </div>
+      <?php
+                            }
+                            ?>
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"><?= $row['full_name'] ?></a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
 								<a class="dropdown-item" href="userprofile.php">Profile</a>
 								<a class="dropdown-item" href="change-password.php">Change Password</a>

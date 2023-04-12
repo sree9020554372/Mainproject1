@@ -6,9 +6,14 @@ error_reporting(0);
 $a=$_SESSION['username'];
 echo $_SESSION['username'];
 
-if(isset($a))
-{
-$sql="SELECT username FROM tb_login WHERE login_id='$login_id'";
+$q="select login_id from tb_login where username='$a'";
+$res=mysqli_query($conn,$q);
+$row=mysqli_fetch_array($res);
+$login_id= $row['login_id'];
+
+// if(isset($a))
+// {
+// $sql="SELECT username FROM tb_login WHERE login_id='$login_id'";
 
 
 
@@ -19,7 +24,7 @@ $sql="SELECT username FROM tb_login WHERE login_id='$login_id'";
 if(isset($_POST['BookNow']))
 {
    //$cid=$_GET['id'];
-   $login_id=$_GET['login_id'];
+   //$login_id=$_POST['login_id'];
    //$bookid= $_POST['bookid'];
    $username= $_POST['username'];
    $email= $_POST['email'];
@@ -28,7 +33,9 @@ if(isset($_POST['BookNow']))
  
 
    
+   //$query1=mysqli_query($conn,"INSERT INTO `tbl_booking`(login_id,username,email,cname,cost,status) VALUES('$login_id','$a','$email','$cname','$cost','active')");
    $query1=mysqli_query($conn,"INSERT INTO `tbl_booking`(login_id,username,email,cname,cost,status) VALUES('$login_id','$a','$email','$cname','$cost','active')");
+
     //$result1 = mysqli_query($conn,$query1);
 	
     if ($query1) {
@@ -49,7 +56,7 @@ if(isset($_POST['BookNow']))
   
 }
 
-}
+//}
 
 ?> 
 

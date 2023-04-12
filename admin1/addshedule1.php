@@ -284,7 +284,7 @@ if(isset($_POST['submited']))
 
               
 
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-6">
                                                 <div class="card">
                                                     <div class="card-header">
                                                         <strong>ADD CLASSES</strong> 
@@ -361,7 +361,7 @@ while($row=mysqli_fetch_array($sql))
                                                            <!-- <div class="row form-group">
                                                                 <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">description</label></div>
                                                                 <div class="col-12 col-md-9"><textarea name="description" id="description" rows="9" placeholder="Content..." class="form-control"></textarea></div>
-                                                            </div>-->
+                                                            </div> -->
                                                                 
                                                                 
                                                           

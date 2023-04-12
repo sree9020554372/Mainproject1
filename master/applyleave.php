@@ -418,6 +418,8 @@ function maxlength(element, maxvalue){
                                                             <div class="row form-group">
                                                                 <div class="col col-md-13"><label for="text-input" class=" form-control-label">End Date</label></div>
                                                                 <div class="col-12 col-md-19"><input type="date" id="edate" name="edate" rows="9" placeholder="Content..." class="form-control"><small class="form-text text-muted"></small></div>
+                                                                  
+
                                                                 
                                                            
                                                             </div>

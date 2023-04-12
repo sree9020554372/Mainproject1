@@ -5,13 +5,21 @@
   $a=$_SESSION['username'];
   //echo $_SESSION['username'];
     include('connection.php');
+
+
+    $q="select login_id from tb_login where username='$a'";
+    $res=mysqli_query($conn,$q);
+    $row=mysqli_fetch_array($res);
+    $login_id= $row['login_id'];
+    // echo $login_id;
+
     //$reg_id=$_REQUEST['reg_id'];
-   // if(isset($a))
-    //{
-    //$sql="SELECT username FROM tb_login WHERE login_id='$login_id'";
+//     if(isset($a))
+//     {
+//     $sql="SELECT username FROM tb_login WHERE login_id='$login_id'";
   
-   // }
-//$u= $row['reg_id'];
+//    }
+// $u= $row['reg_id'];
 
 
 
@@ -240,8 +248,12 @@
                 <div class="col-sm-5">
 
                 <?php
-            // $reg_id=$_REQUEST['reg_id'];
-              $query=mysqli_query($conn, "SELECT * FROM tbl_reg WHERE  STATUS='1' ");
+          // $reg_id=$_REQUEST['reg_id'];
+          
+
+       
+       
+              $query=mysqli_query($conn, "SELECT * FROM tbl_reg WHERE login_id = '$login_id' AND   STATUS='1' ");
               //$query=mysqli_query($conn, "SELECT * FROM tbl_reg WHERE reg_id='$reg_id' AND STATUS='1' ");
               //"SELECT tbl_reg.* 
               //FROM tbl_reg 
@@ -334,7 +346,7 @@
 
                         <?php
             // $reg_id=$_REQUEST['reg_id'];
-              $query=mysqli_query($conn, "SELECT * FROM tbl_reg WHERE  STATUS='1' ");
+              $query=mysqli_query($conn, "SELECT * FROM tbl_reg WHERE login_id = '$login_id' AND   STATUS='1' ");
               //$query=mysqli_query($conn, "SELECT * FROM tbl_reg WHERE reg_id='$reg_id' AND STATUS='1' ");
               //"SELECT tbl_reg.* 
               //FROM tbl_reg 
@@ -344,13 +356,16 @@
               $num2=mysqli_num_rows($query);
               if($num2 > 0){
                   $row= mysqli_fetch_array($query);
+                  
              }
               else{
                   $row= null;
+                 
               }
           
           
-          
+            
+                
           
           ?>  
 
@@ -377,7 +392,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-4 label"></div>
              <div class="col-lg-9 col-md-8">
-              <label for="full_name" class="form-control-label"><h5 style=font-weight:bold;font-size:20px;color:light-blue><?= $row['full_name'] ?></h5></label>
+              <label for="full_name" class="form-control-label"><h5 style=font-weight:bold;font-size:20px;color:light-blue   ><?= $row['full_name'] ?></h5></label>
              </div>
             </div>
           
@@ -438,7 +453,7 @@
               <div class="row">
             <div class="col-lg-3 col-md-4 label"></div>
              <div class="col-lg-9 col-md-8">
-              <label for="full_name" class="form-control-label"><h5 style=font-weight:bold;font-size:20px;color:light-blue><?= $row['full_name'] ?></h5></label>
+              <label for="full_name" class="form-control-label"><h5 style=font-weight:bold;font-size:20px;color:light-blue ><?= $row['full_name'] ?></h5></label>
              </div>
             </div>
               <h5 class="card-title">Profile Details</h5>

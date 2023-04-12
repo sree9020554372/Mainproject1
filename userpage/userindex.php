@@ -1,13 +1,13 @@
 <?php
-//include '../connection.php';
-//session_start();
-//if (! empty($_SESSION['logged_in'])) {
-	# code...
-	//$uid = $_SESSION['reg_id'];
-	//$sql = mysqli_query($conn,"SELECT * from register where reg_id='$uid'");
-	//while($row=mysqli_fetch_array($sql)){
-		//$name = $row['full_name'];
-	//}
+include ('connection.php');
+
+session_start();
+if($_SESSION['username']){
+	$a=$_SESSION['username'];
+	// echo $e;
+}else{
+	header("location:userindex.php");
+}
 ?>
 
 
@@ -94,12 +94,39 @@
 						</li>-->
 						
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">My Account</a>
+						<div class="dropdown-menu">
+      <?php
+
+$q="select login_id from tb_login where username='$a'";
+$res=mysqli_query($conn,$q);
+$row=mysqli_fetch_array($res);
+$login_id= $row['login_id'];
+                                $sql3=mysqli_query($conn,"SELECT login_id from tb_login where username='$a'");
+                                while($row=mysqli_fetch_array($sql3))
+                                {
+                                 // $a=$row['username'];
+                                }
+                                // $sql4=mysqli_query($conn,"SELECT r.full_name from tbl_reg r join tb_login l on r.login_id= l.login_id where r.login_id='$a' ");
+								$sql4=mysqli_query($conn,"SELECT * FROM tbl_reg WHERE login_id='$login_id' AND  STATUS='2' ");
+                                while($row=mysqli_fetch_array($sql4))
+                                {
+                                 // $b=$row['full_name'];
+                                ?>
+        <img src="images/profile/profileuser.png" alt="">
+        <!-- <span class="user_name"><?php echo $row['full_name']; ?></span> -->
+        <i class='bx bx-chevron-down' ></i>
+      </div>
+     
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"><?= $row['full_name'] ?></a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
 								<a class="dropdown-item" href="userprofile.php">Profile</a>
 								<a class="dropdown-item" href="change-password.php">Change Password</a>
 								<a class="dropdown-item" href="../logout.php">Logout</a>
 							</div>
+
+							<?php
+                            }
+                            ?>
 						</li>
 						
 					</ul>

@@ -359,7 +359,7 @@ session_start();
               
               <?php
               include 'connection.php';
-              $query=mysqli_query($conn, $sql="SELECT * FROM tbl_master WHERE STATUS='active'");
+              $query=mysqli_query($conn, $sql="SELECT * FROM tbl_master WHERE STATUS='3'");
               
 $cnt=1;
 while($row=mysqli_fetch_array($query))

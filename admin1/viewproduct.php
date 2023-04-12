@@ -1,42 +1,3 @@
-<?php
-session_start();
-include('connection.php');
-
-   
-if(isset($_POST['submited']))
-  {
-   
-    $cid=$_POST['cid'];
-    $ctime=$_POST['ctime'];
-    $etime=$_POST['etime'];
-    $link=$_POST['link'];
-    
-
- 
-    $query1=mysqli_query($conn," INSERT INTO `tbl_shedule`(`cid`, `ctime`,`etime`,`link`, `status`) VALUES('$cid', '$ctime','$etime','$link','active')");
-    //$result1 = mysqli_query($conn,$query1);
-    if ($query1) {
-    	echo "<script>alert('shedule has been added.');</script>"; 
-    		echo "<script>window.location.href = 'addshedule.php'</script>";   
-   
-  }
-  else
-    {
-    echo "<script>alert('Something Went Wrong. Please try again.');</script>";  	
-    }
-
-  
-}
-
-
-?>
-    
-
-
-
-
-
-
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -48,7 +9,7 @@ if(isset($_POST['submited']))
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
+    <title>ElegantD </title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -89,30 +50,31 @@ if(isset($_POST['submited']))
                     <li>
                         <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
-                    <h3 class="menu-title">Add Classes</h3><!-- /.menu-title -->
+                    <h3 class="menu-title"></h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
-                     
+                    
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Category</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="adcategory.php">Add Category</a></li>
-                            <li><i class="fa fa-table"></i><a href="manage_category.php">Manage category</a></li>
-                        </ul>
-                    </li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Add Category</a>
+                            <ul class="sub-menu children dropdown-menu">
+                                <li><i class="fa fa-table"></i><a href="adcategory.php">category</a></li>
+                                <li><i class="fa fa-table"></i><a href="manage_category.php">Manage category</a></li>
+                            </ul>
+                        </li>
+                        
                     
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Add Classes</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-table"></i><a href="addcourse.php">Add Classes</a></li>
-                            <li><i class="fa fa-table"></i><a href="viewcourse.php">Manage Classes</a></li>
+                            <li><i class="fa fa-table"></i><a href="viewcourse.php">Manage classes</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children active dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Add Master</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-th"></i><a href="addmaster.php">Add Master</a></li>
-                            <li><i class="menu-icon fa fa-th"></i><a href="">Manage_Master</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="manage_master.php">Manage_Master</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children active dropdown">
@@ -122,26 +84,31 @@ if(isset($_POST['submited']))
                             <li><i class="menu-icon fa fa-th"></i><a href="manage_shedule.php">Manage Shedule</a></li>
                         </ul>
                     </li>
-                   <!-- <li class="menu-item-has-children active dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
+                    <!-- <li class="menu-item-has-children active dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Course Related</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-th"></i><a href="forms-basic.html">Basic Form</a></li>
-                            <li><i class="menu-icon fa fa-th"></i><a href="forms-advanced.html">Advanced Form</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="video/add.php">Add Video</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="video/index.php">View video</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="pdf/insert.php">Add pdf</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="pdf/pdfview.php">View pdf</a></li>
+                        </ul>
+                    </li> -->
+                    <li class="menu-item-has-children active dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Students</a>
+                        <ul class="sub-menu children dropdown-menu">
+                           
+                            <li><i class="menu-icon fa fa-th"></i><a href="manage_leave.php">Leave Request</a></li>
                         </ul>
                     </li>
-
+                  
+                    <li class="menu-item-has-children active dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Master</a>
+                        <ul class="sub-menu children dropdown-menu">
+                           
+                            <li><i class="menu-icon fa fa-th"></i><a href="viewleave.php">Leave Request</a></li>
+                        </ul>
+                    </li>
                    
-                    </li>
-                    <h3 class="menu-title">Extras</h3><!-- /.menu-title -->
-                    <!--<li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-login.html">Login</a></li>
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-register.html">Register</a></li>
-                            <li><i class="menu-icon fa fa-paper-plane"></i><a href="pages-forget.html">Forget Pass</a></li>
-                        </ul>
-                    </li>
-                </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
     </aside><!-- /#left-panel -->
@@ -243,13 +210,10 @@ if(isset($_POST['submited']))
                         </a>
 
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
+                            <a class="nav-link" href="admin-profile.php"><i class="fa fa-user"></i> My Profile</a>
 
-                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
-
-                            <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
-
-                            <a class="nav-link" href="../index.html"><i class="fa fa-power-off"></i> Logout</a>
+                       
+                            <a class="nav-link" href="../logout.php"><"><i class="fa fa-power-off"></i> Logout</a>
                         </div>
                     </div>
 
@@ -276,115 +240,113 @@ if(isset($_POST['submited']))
                 </div>
             </div>
 
-        </header>
+        <!-- Header-->
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Dashboard</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li><a href="#">Dashboard</a></li>
+                            <li><a href="#">Table</a></li>
+                            <li class="active">Basic table</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="content mt-3">
             <div class="animated fadeIn">
-
-
+                <div class="row">
+                    <div class="col-lg-16">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Basic Table</strong>
+                            </div>
+                            <div class="card-body">
+                                <table class="table">
+                                
+              
+              <tr>
+                  <th>S1.NO</th>
+                  <th>Product Name</th>
+               
+                  <th>cost</th>
+                  <th>description</th>
+                  <th>images</th>
+                  <th>Delete</th>
+                  <th>Update</th>
+              </tr>
+          
               
 
-                                            <div class="col-lg-12">
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        <strong>ADD CLASSES</strong> 
-                                                    </div>
-                                                    <div class="card-body card-block">
-                                                        <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal">
-                                                       
-                                                        <?php
+              <?php
+              include 'connection.php';
+             
+            //  $query=mysqli_query($conn, "SELECT tbl_course.cid, tbl_course.cname, tbl_course.cstart, tbl_course.cost, tbl_course.description,tbl_course.images,tbl_course.status, tbl_category.categoryname
+              //FROM tbl_course, tbl_category 
+              //WHERE tbl_course.c_id = tbl_category.c_id AND tbl_course.status='active'");
 
-
-
-$sql=mysqli_query($conn,"select * from tbl_course where status='active'"); 
-?>
-<label>Course Name</label><br>
-
-     
-<select   name="cid" id="category" onchange="showResult(this.value)" class="form-control m-bot15" required >
-<option value="">--select--</option>
-<?php
-while($row=mysqli_fetch_array($sql))
+              $query=mysqli_query($conn, $sql="SELECT * FROM tbl_product WHERE STATUS='active'");
+              
+           
+              
+$cnt=1;
+while($row=mysqli_fetch_array($query))
 {
+?>                                  
+              <tr>
+                  <td><?php echo htmlentities($cnt);?></td>
+                  <td><?php echo htmlentities($row['product_name']);?></td>"
+                 
+                 
+                  <td> <?php echo htmlentities($row['cost']);?></td>
+                  <td> <?php echo htmlentities($row['description']);?></td>
+                  <td><img src="../images/<?php  echo $row['images'];?>"> </td>
+                  <td><a style="color:blue" href="courseupdate1111.php?cid=<?php echo $row['pid'];?>"><b>Edit</a></td>
+		        <td><a style="color:#F63" href="deletecourse.php?cid=<?php echo $row['pid'];?>"><b>Delete</a></td>
+                                     
+               <td>
+               <?php
+                    //if($row['status']==1){
+                        //echo '<p><a href="inactive.php?id='.$row['cid'].'$status=1">Disable</a></p>';
+                    //}else{
+                       // echo '<p><a href="active.php?id='.$row['cid'].'$status=0">Enable</a></p>';
+                    //}
+                    ?>
+              <!--<td><a href="courseupdate1111.php?cid=<?php echo $row['cid']?>">update</a></td>-->
+              </tr>
+              <?php $cnt=$cnt+1; } ?>
+              
+      </table>
+                                        
+                            
+                            </div>
+                        </div>
+                    </div>
 
-?>
-<option value="<?php echo $row[0] ?>" ><?php echo $row[3] ?></option>
-
-<?php
-  
-}
-?>
-
-</select></div>
-<div class="form-group">
-
-
-     
-</div>
-  
-  
-
-                                                           
-                                                            
-                                                                   
-                                                            
-                                                          
-                                                            <!--<div class="row form-group">
-                                                                    <div class="col col-md-13"><label for="select" class=" form-control-label" name="category">Category</label></div>
-                                                                    <div class="col-12 col-md-19">
-                                                                        <select name="category" id="scategory" class="form-control">
-                                                                            <option value="please select">Please select</option>
-                                                                            <option value="classical">Classical</option>
-                                                                            <option value="western">Western</option>
-                                                                            <option value="options">Option #3</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>-->
-                                                            
-                                                           
+                  
 
 
-                                                            <div class="row form-group">
-                                                                <div class="col col-md-13"><label for="text-input" class=" form-control-label">Start time</label></div>
-                                                                <div class="col-12 col-md-19"><input type="time" id="ctime" name="ctime" placeholder="enter class name"   class="form-control" ><small class="form-text text-muted"></small></div>
-                                                            </div>
-                                                            <div class="row form-group">
-                                                                <div class="col col-md-13"><label for="text-input" class=" form-control-label">End time</label></div>
-                                                                <div class="col-12 col-md-19"><input type="time" id="time" name="etime" rows="9" placeholder="Content..." class="form-control"><small class="form-text text-muted"></small></div>
-                                                            </div>
-                                                            
-                                                            <div class="row form-group">
-                                                                <div class="col col-md-13"><label for="text-input" class=" form-control-label">Link</label></div>
-                                                                <div class="col-12 col-md-19"><input type="text" id="link" name="link" rows="9" placeholder="Content..." class="form-control"><small class="form-text text-muted"></small></div>
-                                                            </div> 
-                                                          
-                                                           <!-- <div class="row form-group">
-                                                                <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">description</label></div>
-                                                                <div class="col-12 col-md-9"><textarea name="description" id="description" rows="9" placeholder="Content..." class="form-control"></textarea></div>
-                                                            </div>-->
-                                                                
-                                                                
-                                                          
-                                                            
-                                                            <input type="submit" class="btn btn-primary" name="submited" id="submit">
-                                                            <?php  ?> 
-                                                        </form>
-                                                    </div>
-                                                    <div class="card-footer">
-                                                        
-                                                        
-                                                </div>
-                                             </div>
+    </div><!-- /#right-panel -->
+
+    <!-- Right Panel -->
 
 
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
 
-                            <script src="vendors/jquery/dist/jquery.min.js"></script>
-                            <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
 
-                            <script src="vendors/jquery-validation/dist/jquery.validate.min.js"></script>
-                            <script src="vendors/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
-
-                            <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-                            <script src="assets/js/main.js"></script>
 </body>
+
 </html>

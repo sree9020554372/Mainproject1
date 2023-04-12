@@ -6,11 +6,16 @@ if (!empty($_SESSION['logged_in'])) {
    
    echo $_SESSION['username'];
 
-if(isset($a))
-{
-$sql="SELECT username FROM tb_login WHERE login_id='$login_id'";
+// if(isset($a))
+// {
+// $sql="SELECT username FROM tb_login WHERE login_id='$login_id'";
 
-}
+// }
+
+$q="select login_id from tb_login where username='$a'";
+$res=mysqli_query($conn,$q);
+$row=mysqli_fetch_array($res);
+$login_id= $row['login_id'];
 }
 ?>
 
@@ -195,7 +200,12 @@ if(isset($message)){
             <?php
             include 'connection.php';
             //$gid=$_REQUEST['bookid'];
-            $query=mysqli_query($conn, $sql = "SELECT  * FROM tbl_booking WHERE login_id='$a'  AND STATUS='active'");
+            $a=$_SESSION['username'];
+            $q="select login_id from tb_login where username='$a'";
+            $res=mysqli_query($conn,$q);
+            $row=mysqli_fetch_array($res);
+            $login_id= $row['login_id'];
+            $query=mysqli_query($conn, $sql = "SELECT  * FROM tbl_booking WHERE login_id='$login_id' AND STATUS='active'");
               
               
                 $cnt=1;

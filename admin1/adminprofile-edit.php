@@ -12,6 +12,11 @@
    // }
 //$u= $row['reg_id'];
 
+$q="select login_id from tb_login where username='$a'";
+$res=mysqli_query($conn,$q);
+$row=mysqli_fetch_array($res);
+$login_id= $row['login_id'];
+
 if(isset($_POST['update']))
 {
   $reg_id = $_GET['reg_id'];
@@ -360,7 +365,7 @@ if(isset($_POST['update']))
 
                         <?php
              //$reg_id=$_REQUEST['reg_id'];
-              $query=mysqli_query($conn, "SELECT * FROM tbl_reg WHERE STATUS='1' ");
+              $query=mysqli_query($conn, "SELECT * FROM tbl_reg WHERE login_id='$login_id' AND  STATUS='1' ");
               //"SELECT tbl_reg.* 
               //FROM tbl_reg 
               //INNER JOIN tb_login ON tbl_reg.login_id = tb_login.username WHERE tb_login.username = 'a' ");
@@ -393,7 +398,7 @@ if(isset($_POST['update']))
 <section class="section profile">
 <?php
 //$id=$_GET['reg_id'];
-$query=mysqli_query($conn,"select * from tbl_reg where status='1'");
+$query=mysqli_query($conn,"select * from tbl_reg where login_id='$login_id' and  status='1'");
 $num2=mysqli_num_rows($query);
     if($num2 > 0){
         $row= mysqli_fetch_array($query);
@@ -456,7 +461,7 @@ $num2=mysqli_num_rows($query);
             </li>
 
             <li class="nav-item">
-              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
+              <button class="nav-link" data-bs-toggle="tab" ><a href="adminprofile-ch.php?login_id=<?php echo $row['login_id'];?>">Change Password</a></button>
             </li>
 
           </ul>
