@@ -8,12 +8,12 @@ if(isset($_POST['submit']))
 {
   if(isset($_POST['mid']))
   {
-    $mid=$_POST['mid'];
+    //$mid=$_POST['mid'];
    
     $reason=$_POST['reason'];
     $sdate=$_POST['sdate'];
     $edate=$_POST['edate'];
-    $query=mysqli_query($conn, "insert into  tbl_mleave( mid, reason,sdate,edate, status ) value('$mid', '$reason','$sdate','$edate','active')");
+    $query=mysqli_query($conn, "insert into  tbl_mleave(  reason,sdate,edate, status ) value( '$reason','$sdate','$edate','active')");
     if ($query) {
     	echo "<script>alert('leave has been added.');</script>"; 
     		echo "<script>window.location.href = 'applyleave.php'</script>";   

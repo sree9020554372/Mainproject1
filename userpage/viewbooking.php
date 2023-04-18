@@ -363,7 +363,7 @@ if(isset($message)){
               
                jQuery.ajax({
                    type:"POST",
-                   url: "payment_process.php",
+                   url: "payement_process.php",
                    data:"payment_id="+response.razorpay_payment_id+"&amount="+amount+"&name="+name,
                    success:function(result){
                        window,location.href="thankyou.php";

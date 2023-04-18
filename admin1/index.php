@@ -1,4 +1,14 @@
+<?php
+	include ('connection.php');
 
+    session_start();
+    if($_SESSION['username']){
+        $a=$_SESSION['username'];
+        // echo $e;
+    }else{
+        header("location:index.php");
+    }
+   ?> 
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -126,6 +136,7 @@
                         <ul class="sub-menu children dropdown-menu">
                            
                             <li><i class="menu-icon fa fa-th"></i><a href="viewleave.php">Leave Request</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="viewallLeave.php"> view all Leave Details</a></li>
                         </ul>
                     </li>
                     
@@ -227,11 +238,44 @@
 
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
+
+                    <div class="profile-details">
+						
+                        <?php
+                  
+                  $q="select login_id from tb_login where username='$a'";
+                  $res=mysqli_query($conn,$q);
+                  $row=mysqli_fetch_array($res);
+                  $login_id= $row['login_id'];
+                                                  $sql3=mysqli_query($conn,"SELECT login_id from tb_login where username='$a'");
+                                                  while($row=mysqli_fetch_array($sql3))
+                                                  {
+                                                   // $a=$row['username'];
+                                                  }
+                                                  // $sql4=mysqli_query($conn,"SELECT r.full_name from tbl_reg r join tb_login l on r.login_id= l.login_id where r.login_id='$a' ");
+                                                  $sql4=mysqli_query($conn,"SELECT * FROM tbl_reg WHERE login_id='$login_id' AND  STATUS='1' ");
+                                                  while($row=mysqli_fetch_array($sql4))
+                                                  {
+                                                   // $b=$row['full_name'];
+                                                  ?>
+                          <img src="images/profile/profileuser.png" alt="">
+                          <!-- <span class="user_name"><?php echo $row['full_name']; ?></span> -->
+                          <i class='bx bx-chevron-down' ></i>
+                        </div>
+                       
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
+                            <!-- <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar" value=<?php echo $row['full_name'] ;?>> -->
+                            <img class="user-avatar rounded-circle" src="images/admin.jpg" >      <?= !empty($row['full_name']) ? $row['full_name'] : '' ?>
+
+
                         </a>
 
+                        <?php
+                                                  }
+                                                  ?>
                         <div class="user-menu dropdown-menu">
+
+                        
                             <a class="nav-link" href="adminprofile.php"><i class="fa fa-user"></i> My Profile</a>
 
                           
@@ -239,7 +283,7 @@
                             <a class="nav-link" href="../logout.php"><i class="fa fa-power-off"></i> Logout</a>
                         </div>
                     </div>
-
+                   
                     <div class="language-select dropdown" id="language-select">
                         <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
                             <i class="flag-icon flag-icon-us"></i>

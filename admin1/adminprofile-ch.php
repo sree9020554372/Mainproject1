@@ -99,7 +99,7 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <a href="index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
                    <!---- <h3 class="menu-title">Dance classes</h3><!-- /.menu-title -->
                     <!--<li class="menu-item-has-children dropdown">
@@ -404,7 +404,7 @@
   <p style=font-weight:bold;font-size:20px;color:light-blue>Admin Profile</p>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item"><a href="index.php">Home</a></li>
       <li class="breadcrumb-item">Users</li>
       <li class="breadcrumb-item active">Profile</li>
     </ol>

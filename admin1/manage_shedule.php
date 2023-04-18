@@ -53,7 +53,7 @@ session_start();
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <a href="index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
                     <!--<h3 class="menu-title">UI elements</h3> /.menu-title 
                     <li class="menu-item-has-children dropdown">
@@ -300,6 +300,7 @@ session_start();
                   <th>Class Name</th>
                   <th>start time</th>
                   <th>end time</th>
+                  <th>Link</th>
                   <th>Delete</th>
                   <th>Update</th>
               </tr>
@@ -310,7 +311,7 @@ session_start();
               //$query=mysqli_query($conn, $sql = "SELECT tbl_shedule.shid, tbl_course.cname, tbl_shedule.ctime, tbl_shedule.etime, tbl_shedule.status
              // FROM tbl_course JOIN tbl_shedule ON tbl_shedule.shid=tbl_course.cid" );
              // $query=mysqli_query($conn, $sql = "SELECT  tbl_shedule.shid,tbl_course.cid,tbl_course.cname,tbl_shedule.ctime,tbl_shedule.etime,tbl_shedule.status FROM tbl_course JOIN tbl_shedule ON tbl_shedule.shid=tbl_course.cid" );
-             $query=mysqli_query($conn, $sql ="SELECT  tbl_shedule.shid,tbl_course.cid,tbl_course.cname,tbl_shedule.ctime,tbl_shedule.etime,tbl_shedule.status FROM tbl_course JOIN tbl_shedule ON tbl_shedule.cid=tbl_course.cid AND tbl_shedule.status='active'");
+             $query=mysqli_query($conn, $sql ="SELECT  tbl_shedule.shid,tbl_course.cid,tbl_course.cname,tbl_shedule.ctime,tbl_shedule.etime,tbl_shedule.link,tbl_shedule.status FROM tbl_course JOIN tbl_shedule ON tbl_shedule.cid=tbl_course.cid AND tbl_shedule.status='active'");
 
               
 $cnt=1;
@@ -324,6 +325,7 @@ while($row=mysqli_fetch_array($query))
                   <td><?php echo htmlentities($row['ctime']);?></td>
                  
                   <td> <?php echo htmlentities($row['etime']);?></td>
+                  <td> <?php echo htmlentities($row['link']);?></td>
                   <td><a style="color:blue" href="updateshedule.php?shid=<?php echo $row['shid'];?>"><b>Edit</a></td>
 		        <td><a style="color:#F63" href="deleteshedule.php?shid=<?php echo $row['shid'];?>"><b>Delete</a></td>
                  

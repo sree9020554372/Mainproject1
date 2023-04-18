@@ -265,7 +265,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title"> MARK ATTENDENCE</strong>
+                                <strong class="card-title">Data Table</strong>
                             </div>
                             <div class="card-body">
                             <form method="post" action="handle_attendance.php" name="attendanceForm">
@@ -285,14 +285,14 @@
               
               <?php
               include 'connection.php';
-              $query=mysqli_query($conn, $sql="SELECT * FROM tbl_attend WHERE STATUS='active'");
+              $query=mysqli_query($conn, $sql="SELECT * FROM tbl_attend WHERE STATUS='absent' OR STATUS='present'");
               
 $cnt=1;
 while($row=mysqli_fetch_array($query))
 {
   $status = $row['status'];
   if ($status == 'active') {
-    // $status_display = 'Pending';
+     $status_display = 'Pending';
   } elseif ($status == 'approved') {
     $status_display = 'Approved';
   } elseif ($status == 'rejected') {
@@ -306,6 +306,7 @@ while($row=mysqli_fetch_array($query))
   <td><?php echo htmlentities($row['studentname']);?></td>
   <td><?php echo htmlentities($row['coursename']);?></td>
   <td><?php echo htmlentities($row['date']);?></td>
+  <td><?php echo htmlentities($row['status']);?></td>
   <!-- <td> -->
   <!-- <php 
     if ($row['aid'] == 'present') {
@@ -328,14 +329,14 @@ while($row=mysqli_fetch_array($query))
     <php } ?>
     <td><a style="color:#F63" href="deleteleave.php?aid=<?php echo $row['aid'];?>"><b>Delete</a></td>
   </td> -->
-  <td>
+  <!-- <td>
   <?php if ($status == 'active') { ?>
   
     <input type="checkbox" name="attendance[<?php echo $row['aid'];?>]" value="absent" id="absent-<?php echo $row['aid'];?>" class="absent-checkbox"/>
-<label for="absent-<?php echo $row['aid'];?>" class="absent-label">Absent</label>
+<label for="absent-<?php echo $row['aid'];?>" class="absent-label">Absent</label> -->
 
 
-<style>
+<!-- <style>
   .absent-label {
     color: #FF0000; /* Set the color for the label */
   }
@@ -345,15 +346,15 @@ while($row=mysqli_fetch_array($query))
     font-weight: bold; /* Make the text bold */
     text-decoration: line-through; /* Add a strikethrough */
   }
-</style>
+</style> -->
 
 
-   
+<!--    
 <input type="checkbox" name="attendance[<?php echo $row['aid'];?>]" value="present" id="present-<?php echo $row['aid'];?>" class="present-checkbox"/>
-<label for="present-<?php echo $row['aid'];?>" class="present-label">Present</label>
+<label for="present-<?php echo $row['aid'];?>" class="present-label">Present</label> -->
 
 
-<style>
+<!-- <style>
   
 
   .present-label {
@@ -367,9 +368,9 @@ while($row=mysqli_fetch_array($query))
     margin-right: 5px; /* Add some spacing between the plus sign and the label text */
     font-weight: bold; /* Make the plus sign bold */
   }
-</style>
+</style> -->
    
-<script>
+<!-- <script>
   // Get all the checkboxes
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
@@ -388,7 +389,7 @@ while($row=mysqli_fetch_array($query))
         absentCheckbox.checked = false;
       }
     });
-  });
+  }); -->
 </script>
   <?php } else { ?>
     -
@@ -402,7 +403,7 @@ while($row=mysqli_fetch_array($query))
               
       </table>
       <!-- <td><input type="button" id="btn"name="btn"value="save"class="btn btn-primary" /></td>    -->
-      <input type="button" id="btn" name="btn" value="save" class="btn btn-primary" onclick="document.attendanceForm.submit()" />
+      <!-- <input type="button" id="btn" name="btn" value="save" class="btn btn-primary" onclick="document.attendanceForm.submit()" /> -->
 
   </form>
 <?php

@@ -1,8 +1,13 @@
 <?php
 session_start();
+$a=$_SESSION['username'];
 include('connection.php');
 
-   
+$q="select login_id from tb_login where username='$a'";
+$res=mysqli_query($conn,$q);
+$row=mysqli_fetch_array($res);
+$login_id= $row['login_id'];   
+
 if(isset($_POST['submited']))
   {
    
@@ -75,7 +80,7 @@ else
             {
               foreach($res as $data)
               {
-                $query1=mysqli_query($conn," INSERT INTO `tbl_master`(`name`, `email`,`phoneno`,`age`,`gender`,`Qualification`,`exp`,`img`,`idproof`,`certificates`,`username`,`password`,`status` ) VALUES('$name','$email','$phoneno','$age',' $gender','$Qualification','$exp','$img','$idproof','$certificates','$username','$password','3')");
+                $query1=mysqli_query($conn," INSERT INTO `tbl_master`(`login_id`,`name`, `email`,`phoneno`,`age`,`gender`,`Qualification`,`exp`,`img`,`idproof`,`certificates`,`username`,`password`,`status` ) VALUES('$login_id','$name','$email','$phoneno','$age',' $gender','$Qualification','$exp','$img','$idproof','$certificates','$username','$password','3')");
                 $result1 = mysqli_query($conn,$query1);
                 if ($query1) {
                         	echo "<script>alert('Master has been added.');</script>"; 
@@ -152,7 +157,7 @@ else
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <a href="index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
                     <h3 class="menu-title"></h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">

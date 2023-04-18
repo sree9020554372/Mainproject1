@@ -10,10 +10,10 @@ if(isset($_POST['submited']))
     $cid=$_POST['cid'];
     $ctime=$_POST['ctime'];
     $etime=$_POST['etime'];
-    
+    $link=$_POST['link'];
 
  
-    $query1=mysqli_query($conn," INSERT INTO `tbl_shedule`(`c_id`,`cid`, `ctime`,`etime`, `status`) VALUES('$c_id','$cid', '$ctime','$etime','active')");
+    $query1=mysqli_query($conn," INSERT INTO `tbl_shedule`(`c_id`,`cid`, `ctime`,`etime`,`link`, `status`) VALUES('$c_id','$cid', '$ctime','$etime','$link','active')");
     //$result1 = mysqli_query($conn,$query1);
     if ($query1) {
     	echo "<script>alert('shedule has been added.');</script>"; 
@@ -89,7 +89,7 @@ if(isset($_POST['submited']))
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <a href="index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
                     <h3 class="menu-title"></h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
@@ -420,7 +420,10 @@ function validate() {
 
 
 
-
+<div class="row form-group">
+  <div class="col col-md-13"><label for="link" class=" form-control-label">Link</label></div>
+  <div class="col-12 col-md-19"><input type="type" id="link" name="link" placeholder="enter link" class="form-control" required onChange=" return Validatun ();"></div>
+</div>
 
 
 

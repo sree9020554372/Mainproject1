@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -9,7 +14,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ElegantDance </title>
+    <title>ElegantDance - HTML5 Admin Template</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,12 +27,13 @@
     <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
 
     <link rel="stylesheet" href="assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+
+
 </head>
 
 <body>
@@ -49,9 +55,9 @@
                     <li>
                         <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
-                    <h3 class="menu-title">Add Classes</h3><!-- /.menu-title -->
+                    <!--<h3 class="menu-title">UI elements</h3> /.menu-title 
                     <li class="menu-item-has-children dropdown">
-                       <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Components</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Components</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Buttons</a></li>
                             <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Badges</a></li>
@@ -97,6 +103,67 @@
                             <li><i class="menu-icon fa fa-th"></i><a href="addA.php">Add Ateendence </a></li>
                             <li><i class="menu-icon fa fa-th"></i><a href="manageA.php">view Ateendence </a></li>
                             
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children active dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Course Materials</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-th"></i><a href="pdf/pdfview.php">VIEW PDF </a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href=".php">view VIDEO </a></li>
+                            
+                        </ul>
+                        <li class="menu-item-has-children active dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Apply Leave</a>
+                            <ul class="sub-menu children dropdown-menu">
+                                <li><i class="menu-icon fa fa-th"></i><a href="applyleave.php">Apply Leave </a></li>
+                                <li><i class="menu-icon fa fa-th"></i><a href="Viewleave.php">view Leave </a></li>
+                                
+                            </ul>
+</li>
+                    
+                    <!---<li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-th"></i><a href="forms-basic.html">Basic Form</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="forms-advanced.html">Advanced Form</a></li>
+                        </ul>
+                    </li>-->
+
+                    <!--<h3 class="menu-title">Icons</h3><!-- /.menu-title 
+
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Icons</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-fort-awesome"></i><a href="font-fontawesome.html">Font Awesome</a></li>
+                            <li><i class="menu-icon ti-themify-logo"></i><a href="font-themify.html">Themefy Icons</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Charts</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-line-chart"></i><a href="charts-chartjs.html">Chart JS</a></li>
+                            <li><i class="menu-icon fa fa-area-chart"></i><a href="charts-flot.html">Flot Chart</a></li>
+                            <li><i class="menu-icon fa fa-pie-chart"></i><a href="charts-peity.html">Peity Chart</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Maps</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-map-o"></i><a href="maps-gmap.html">Google Maps</a></li>
+                            <li><i class="menu-icon fa fa-street-view"></i><a href="maps-vector.html">Vector Maps</a></li>
+                        </ul>
+                    </li>
+                    <h3 class="menu-title">Extras</h3><!-- /.menu-title -->
+                    <!--<li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-login.html">Login</a></li>
+                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-register.html">Register</a></li>
+                            <li><i class="menu-icon fa fa-paper-plane"></i><a href="pages-forget.html">Forget Pass</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -207,7 +274,7 @@
 
                             <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
 
-                            <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Logout</a>
+                            <a class="nav-link" href="../index.html"><i class="fa fa-power-off"></i> Logout</a>
                         </div>
                     </div>
 
@@ -250,8 +317,8 @@
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="#">Dashboard</a></li>
-                            <li><a href="#">Table</a></li>
-                            <li class="active">Data table</li>
+                            <li><a href="#"></a></li>
+                            <li class="active"></li>
                         </ol>
                     </div>
                 </div>
@@ -261,162 +328,67 @@
         <div class="content mt-3">
             <div class="animated fadeIn">
                 <div class="row">
-
-                    <div class="col-md-12">
+                    <div class="col-lg-16">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title"> MARK ATTENDENCE</strong>
+                                <strong class="card-title">Basic Table</strong>
                             </div>
                             <div class="card-body">
-                            <form method="post" action="handle_attendance.php" name="attendanceForm">
-                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
-                                    <thead>
-                                    <tr>
+                                <table class="table">
+                                
+              
+              <tr>
                   <th>S1.NO</th>
-                  <th>STUDENT Name</th>
-                  <th>COURSE NAME</th>
-                  <th>DATE</th>
-                  <th>ACTION</th>
-
-                 
+                  
+                  <th> Reason</th>
+                  <th>START DATE</th>
+                  <th>END DATE</th>
+                  <th>Status</th>
+                  
+                  <th>DELETE</th>
+                
                   
               </tr>
           
               
               <?php
               include 'connection.php';
-              $query=mysqli_query($conn, $sql="SELECT * FROM tbl_attend WHERE STATUS='active'");
+              $query=mysqli_query($conn, $sql = "SELECT * FROM tbl_mleave WHERE STATUS='accepted' OR STATUS='rejected'" );
               
 $cnt=1;
 while($row=mysqli_fetch_array($query))
 {
-  $status = $row['status'];
-  if ($status == 'active') {
-    // $status_display = 'Pending';
-  } elseif ($status == 'approved') {
-    $status_display = 'Approved';
-  } elseif ($status == 'rejected') {
-    $status_display = 'Rejected';
-  } else {
-    $status_display = 'Unknown';
-  }
-?>
-<tr>
-  <td><?php echo htmlentities($cnt);?></td>
-  <td><?php echo htmlentities($row['studentname']);?></td>
-  <td><?php echo htmlentities($row['coursename']);?></td>
-  <td><?php echo htmlentities($row['date']);?></td>
-  <!-- <td> -->
-  <!-- <php 
-    if ($row['aid'] == 'present') {
-      echo "Present";
-    } else if ($row['aid'] == 'absent') {
-      echo "Absent";
-    } else {
-      echo "-";
-    }
-  ?>
-</td> -->
-
-  
-  <!-- <td><?php echo $status_display;?></td> -->
-  <!-- <td>
-    <php if ($status == 'active') { ?>
-      <a style="color:#F63" href="doneleave.php?aid=<?php echo $row['aid'];?>&action=approve"><b>absent</a> / <a style="color:#F63" href="leaverejected.php?ml=<?php echo $row['aid'];?>&action=reject"><b>present</a>
-    <php } else { ?>
-      -
-    <php } ?>
-    <td><a style="color:#F63" href="deleteleave.php?aid=<?php echo $row['aid'];?>"><b>Delete</a></td>
-  </td> -->
-  <td>
-  <?php if ($status == 'active') { ?>
-  
-    <input type="checkbox" name="attendance[<?php echo $row['aid'];?>]" value="absent" id="absent-<?php echo $row['aid'];?>" class="absent-checkbox"/>
-<label for="absent-<?php echo $row['aid'];?>" class="absent-label">Absent</label>
-
-
-<style>
-  .absent-label {
-    color: #FF0000; /* Set the color for the label */
-  }
-
-  /* Style the label when the checkbox is checked */
-  input[type=checkbox]:checked + .absent-label {
-    font-weight: bold; /* Make the text bold */
-    text-decoration: line-through; /* Add a strikethrough */
-  }
-</style>
-
-
-   
-<input type="checkbox" name="attendance[<?php echo $row['aid'];?>]" value="present" id="present-<?php echo $row['aid'];?>" class="present-checkbox"/>
-<label for="present-<?php echo $row['aid'];?>" class="present-label">Present</label>
-
-
-<style>
-  
-
-  .present-label {
-    color: green; /* Set the color for the present label */
-  }
-
-  /* Style the label when the checkbox is checked */
-  input[type=checkbox]:checked + .present-label::before {
-    content: "\2713"; /* Add a plus sign before the label text */
-    display: inline-block; /* Make the plus sign appear on the same line as the label */
-    margin-right: 5px; /* Add some spacing between the plus sign and the label text */
-    font-weight: bold; /* Make the plus sign bold */
-  }
-</style>
-   
-<script>
-  // Get all the checkboxes
-  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-
-  // Listen for changes in the checkboxes
-  checkboxes.forEach((checkbox) => {
-    checkbox.addEventListener('change', (event) => {
-      // If the "Absent" checkbox is checked, uncheck the "Present" checkbox
-      if (event.target.classList.contains('absent-checkbox') && event.target.checked) {
-        const presentCheckbox = event.target.parentElement.querySelector('.present-checkbox');
-        presentCheckbox.checked = false;
-      }
-
-      // If the "Present" checkbox is checked, uncheck the "Absent" checkbox
-      if (event.target.classList.contains('present-checkbox') && event.target.checked) {
-        const absentCheckbox = event.target.parentElement.querySelector('.absent-checkbox');
-        absentCheckbox.checked = false;
-      }
-    });
-  });
-</script>
-  <?php } else { ?>
-    -
-  <?php } ?>
- 
-  <!-- <td><a style="color:#F63" href="deleteleave.php?aid=<?php echo $row['aid'];?>"><b>Delete</a></td> -->
-</td>
-
-</tr>
-<?php $cnt=$cnt+1; } ?>
+?>                                  
+              <tr>
+                  <td><?php echo htmlentities($cnt);?></td>
+                 
+                  <td><?php echo htmlentities($row['reason']);?></td>
+                  <td><?php echo htmlentities($row['sdate']);?></td>
+                  <td><?php echo htmlentities($row['edate']);?></td>
+                  <td><?php echo htmlentities($row['status']);?></td>
+                  <td><a style="color:#F63" href="deleteleave.php?ml=<?php echo $row['ml'];?>"><b>Delete</a></td>
+                 
+                 
+                 
+               <?php
+                    //if($row['status']==1){
+                       // echo '<p><a href="inactive.php?id='.$row['cid'].'$status=1">Disable</a></p>';
+                   // }else{
+                       // echo '<p><a href="active.php?id='.$row['cid'].'$status=0">Enable</a></p>';
+                   // }
+                    //?>
+               <!--<td><a href="courseupdate1111.php?cid=<?php echo $row['cid']?>">update</a></td>-->
+              </tr>
+              <?php $cnt=$cnt+1; } ?>
               
       </table>
-      <!-- <td><input type="button" id="btn"name="btn"value="save"class="btn btn-primary" /></td>    -->
-      <input type="button" id="btn" name="btn" value="save" class="btn btn-primary" onclick="document.attendanceForm.submit()" />
-
-  </form>
-<?php
-    // Output download link and button
-    $download_link = 'download.php'; 
-    $download_filename = 'sales_report.csv'; 
-    $download_button = '<div style="text-align: right;"><a href="report.php" class="btn btn-primary"><i class="fas fa-download"></i> Download Report</a></div>';
-    echo  $download_button;
-       ?>        
+                                        
+                                </table>
                             </div>
                         </div>
                     </div>
 
-
+                    
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
@@ -431,19 +403,6 @@ while($row=mysqli_fetch_array($query))
     <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>
-
-
-    <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
-    <script src="vendors/jszip/dist/jszip.min.js"></script>
-    <script src="vendors/pdfmake/build/pdfmake.min.js"></script>
-    <script src="vendors/pdfmake/build/vfs_fonts.js"></script>
-    <script src="vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
-    <script src="assets/js/init-scripts/data-table/datatables-init.js"></script>
 
 
 </body>

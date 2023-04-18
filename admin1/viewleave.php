@@ -53,7 +53,7 @@ session_start();
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <a href="index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
                     <!--<h3 class="menu-title">UI elements</h3> /.menu-title 
                     <li class="menu-item-has-children dropdown">
@@ -348,8 +348,8 @@ session_start();
                   <th> Reason</th>
                   <th>START DATE</th>
                   <th>END DATE</th>
-                  <th>APPROVE</th>
-                  <th>REJECT</th>
+                  <th>STATUS</th>
+                  <th>ACTION</th>
                 
                   
               </tr>
@@ -362,29 +362,32 @@ session_start();
 $cnt=1;
 while($row=mysqli_fetch_array($query))
 {
-?>                                  
-              <tr>
-                  <td><?php echo htmlentities($cnt);?></td>
-                 
-                  <td><?php echo htmlentities($row['reason']);?></td>
-                  <td><?php echo htmlentities($row['sdate']);?></td>
-                  <td><?php echo htmlentities($row['edate']);?></td>
-                  <td><a style="color:#F63" href="doneleave.php?ml=<?php echo $row['ml'];?>"><b>APPROVE</a></td>
-                  <td><a style="color:#F63" href="leavereject.php?ml=<?php echo $row['ml'];?>"><b>REJECT</a></td>
-                 
-                 
-                 
-               
-               <?php
-                    //if($row['status']==1){
-                       // echo '<p><a href="inactive.php?id='.$row['cid'].'$status=1">Disable</a></p>';
-                   // }else{
-                       // echo '<p><a href="active.php?id='.$row['cid'].'$status=0">Enable</a></p>';
-                   // }
-                    //?>
-               <!--<td><a href="courseupdate1111.php?cid=<?php echo $row['cid']?>">update</a></td>-->
-              </tr>
-              <?php $cnt=$cnt+1; } ?>
+  $status = $row['status'];
+  if ($status == 'active') {
+    $status_display = 'Pending';
+  } elseif ($status == 'approved') {
+    $status_display = 'Approved';
+  } elseif ($status == 'rejected') {
+    $status_display = 'Rejected';
+  } else {
+    $status_display = 'Unknown';
+  }
+?>
+<tr>
+  <td><?php echo htmlentities($cnt);?></td>
+  <td><?php echo htmlentities($row['reason']);?></td>
+  <td><?php echo htmlentities($row['sdate']);?></td>
+  <td><?php echo htmlentities($row['edate']);?></td>
+  <td><?php echo $status_display;?></td>
+  <td>
+    <?php if ($status == 'active') { ?>
+      <a style="color:#F63" href="doneleave.php?ml=<?php echo $row['ml'];?>&action=approve"><b>Approve</a> / <a style="color:#F63" href="leaverejected.php?ml=<?php echo $row['ml'];?>&action=reject"><b>Reject</a>
+    <?php } else { ?>
+      -
+    <?php } ?>
+  </td>
+</tr>
+<?php $cnt=$cnt+1; } ?>
               
       </table>
                                         

@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
       $_SESSION['message']="Welcome";
       $_SESSION['username'] = $username;
-      header("location:admin1/index.html");
+      header("location:admin1/index.php");
       exit(0);
     }else if($_SESSION['role']=='user')
     {

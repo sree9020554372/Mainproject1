@@ -334,15 +334,18 @@ session_start();
                                 <strong class="card-title">Basic Table</strong>
                             </div>
                             <div class="card-body">
+                           
                                 <table class="table">
                                 
               
               <tr>
                   <th>S1.NO</th>
-                  <th> Name</th>
+                  
                   <th> Reason</th>
                   <th>START DATE</th>
                   <th>END DATE</th>
+                  <th>Status</th>
+                  
                   <th>DELETE</th>
                 
                   
@@ -351,7 +354,7 @@ session_start();
               
               <?php
               include 'connection.php';
-              $query=mysqli_query($conn, $sql = "SELECT * FROM tbl_mleave WHERE STATUS='active'" );
+              $query=mysqli_query($conn, $sql = "SELECT * FROM tbl_mleave WHERE STATUS='accepted' OR STATUS='rejected'" );
               
 $cnt=1;
 while($row=mysqli_fetch_array($query))
@@ -359,15 +362,15 @@ while($row=mysqli_fetch_array($query))
 ?>                                  
               <tr>
                   <td><?php echo htmlentities($cnt);?></td>
-                  <td><?php echo htmlentities($row['mastername']);?></td>
+                 
                   <td><?php echo htmlentities($row['reason']);?></td>
                   <td><?php echo htmlentities($row['sdate']);?></td>
                   <td><?php echo htmlentities($row['edate']);?></td>
+                  <td><?php echo htmlentities($row['status']);?></td>
                   <td><a style="color:#F63" href="deleteleave.php?ml=<?php echo $row['ml'];?>"><b>Delete</a></td>
                  
                  
                  
-               
                <?php
                     //if($row['status']==1){
                        // echo '<p><a href="inactive.php?id='.$row['cid'].'$status=1">Disable</a></p>';
@@ -386,211 +389,12 @@ while($row=mysqli_fetch_array($query))
                         </div>
                     </div>
 
-                    <!--<div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">Table Dark</strong>
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-dark">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">First</th>
-                                            <th scope="col">Last</th>
-                                            <th scope="col">Handle</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">Table Head</strong>
-                            </div>
-                            <div class="card-body">
-                                <table class="table">
-                                    <thead class="thead-dark">
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">First</th>
-                                            <th scope="col">Last</th>
-                                            <th scope="col">Handle</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">Stripped Table</strong>
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">First</th>
-                                            <th scope="col">Last</th>
-                                            <th scope="col">Handle</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">Bordered Table</strong>
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">First</th>
-                                            <th scope="col">Last</th>
-                                            <th scope="col">Handle</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td colspan="2">Larry the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">Bordered Dark Table</strong>
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-bordered table-dark">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">First</th>
-                                            <th scope="col">Last</th>
-                                            <th scope="col">Handle</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td colspan="2">Larry the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
+                    
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
 
-
+        
     </div><!-- /#right-panel -->
 
     <!-- Right Panel -->

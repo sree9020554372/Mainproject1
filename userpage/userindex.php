@@ -94,7 +94,10 @@ if($_SESSION['username']){
 						</li>-->
 						
 						<li class="nav-item dropdown">
-						<div class="dropdown-menu">
+						<!-- <div class="dropdown-menu"> -->
+							 
+                        <div class="profile-details">
+						
       <?php
 
 $q="select login_id from tb_login where username='$a'";
@@ -117,7 +120,7 @@ $login_id= $row['login_id'];
         <i class='bx bx-chevron-down' ></i>
       </div>
      
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"><?= $row['full_name'] ?></a>
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"  style="color: red;"><?= $row['full_name'] ?></a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
 								<a class="dropdown-item" href="userprofile.php">Profile</a>
 								<a class="dropdown-item" href="change-password.php">Change Password</a>

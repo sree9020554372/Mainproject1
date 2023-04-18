@@ -53,7 +53,7 @@ session_start();
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <a href="index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
                     <!--<h3 class="menu-title">UI elements</h3> /.menu-title 
                     <li class="menu-item-has-children dropdown">
@@ -329,7 +329,7 @@ session_start();
               
               <?php
               include 'connection.php';
-              $query=mysqli_query($conn, $sql="SELECT * FROM tbl_leave");
+              $query=mysqli_query($conn, $sql="SELECT * FROM tbl_leave WHERE STATUS='accepted' AND STATUS='rejected'");
               
 $cnt=1;
 while($row=mysqli_fetch_array($query))
@@ -351,7 +351,7 @@ while($row=mysqli_fetch_array($query))
                         //echo '<p><a href="active.php?id='.$row['mid'].'$status=0">Enable</a></p>';
                     //}
                     ?>
-               <td><a href=""?leaveid=<?php echo $row['leaveid']?>">Approve/Reject</a></td>
+               <td><a href="leavereject.php?leaveid=<?php echo $row['leaveid']?>">Approve/Reject</a></td>
               </tr>
               <?php $cnt=$cnt+1; } ?>
               
